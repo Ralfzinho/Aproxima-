@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aproxima+ conectando você a quem precisa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+    <header>
+        <nav class="bg-white shadow-sm fixed w-full z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <!-- Logo + nome -->
+                    <div class="flex items-center">
+                        <img class="h-8 w-8"
+                            src="../Aproxima-/assets/img/Foto de perfil para redes sociais gradiente simples.png"
+                            alt="Logo Aproxima+">
+                        <span class="ml-2 text-xl font-bold text-blue-700">Aproxima</span>
+                        <span class="ml-1 text-xl font-bold text-green-600">+</span>
+                    </div>
+
+                    <!-- Links de navegação (desktop) -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Início</a>
+                        <a href="#" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Como Funciona</a>
+                        <a href="#" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">ONGs</a>
+                        <a href="#" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Causas</a>
+                        <a href="#" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Contato</a>
+                    </div>
+
+                    <!-- Botões de ação (desktop) -->
+                    <div class="hidden md:flex items-center space-x-3">
+                        <button
+                            class="bg-white text-green-600 border border-green-600 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</button>
+                        <button
+                            class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Cadastrar</button>
+                    </div>
+
+                    <!-- Menu hambúrguer (mobile) -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu mobile -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+                <div class="px-4 pt-4 pb-3 space-y-1">
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Início</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Como
+                        Funciona</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">ONGs</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Causas</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Contato</a>
+                </div>
+                <div class="px-4 pt-4 pb-4 border-t border-gray-200 flex flex-col gap-2">
+                    <button
+                        class="w-full bg-white text-green-700 border border-green-700 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</button>
+                    <button
+                        class="w-full bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-green-700 transition">Cadastrar</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Script para abrir/fechar o menu mobile -->
+    <script>
+        const btn = document.getElementById("mobile-menu-button");
+        const menu = document.getElementById("mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+<!-- Hero Section -->
+<section class="hero-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+                    Encontre a ONG perfeita para o seu propósito
+                </h1>
+                <p class="text-indigo-100 text-xl mb-8">
+                    Conectamos pessoas que querem fazer a diferença com organizações que precisam de ajuda. Descubra sua
+                    causa e comece a transformar vidas hoje.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button
+                        class="bg-white text-indigo-700 px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
+                        Quero Ajudar
+                    </button>
+                    <button
+                        class="bg-transparent text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
+                        Sou uma ONG
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 md:pl-10">
+                <div class="bg-white p-6 rounded-xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Encontre sua causa</h3>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-medium mb-2">O que você procura?</label>
+                        <select
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            <option>Todas as causas</option>
+                            <option>Meio Ambiente</option>
+                            <option>Educação</option>
+                            <option>Saúde</option>
+                            <option>Direitos Humanos</option>
+                            <option>Animais</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Localização</label>
+                        <select
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            <option>Todas as regiões</option>
+                            <option>Norte</option>
+                            <option>Nordeste</option>
+                            <option>Centro-Oeste</option>
+                            <option>Sudeste</option>
+                            <option>Sul</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-medium mb-2">Tipo de ajuda</label>
+                        <select
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                            <option>Todos os tipos</option>
+                            <option>Voluntariado</option>
+                            <option>Doação</option>
+                            <option>Mentoria</option>
+                            <option>Serviços profissionais</option>
+                        </select>
+                    </div>
+                    <button
+                        class="w-full bg-indigo-600 text-white py-3 rounded-md font-medium hover:bg-indigo-700 transition">
+                        Buscar ONGs
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</html>
