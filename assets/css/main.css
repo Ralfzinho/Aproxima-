@@ -19,3 +19,7 @@
     box-sizing: border-box;
     font-family: var(--fonte-primaria);
 }
+
+.hero-gradient {
+    background: linear-gradient(135deg, #00bc60 0%, #0051b5 100%);
+}
