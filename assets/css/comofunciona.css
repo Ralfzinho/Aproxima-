@@ -1,0 +1,39 @@
+.hero-gradient {
+    background: linear-gradient(135deg, #00bc60 0%, #0051b5 100%);
+}
+
+.step-card {
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-line {
+    background: linear-gradient(to bottom, #e5e7eb 0%, #e5e7eb 50%, transparent 50%);
+}
+
+.feature-icon {
+    background: linear-gradient(135deg, #00bc60 0%, #0051b5 100%);
+}
+
+.process-step {
+    position: relative;
+}
+
+.process-step::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 2px;
+    height: 60px;
+    background: #e5e7eb;
+    transform: translateX(-50%);
+}
+
+.process-step:last-child::before {
+    display: none;
+}
