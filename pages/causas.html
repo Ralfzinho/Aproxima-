@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aproxima+ Causas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/causas.css">
+</head>
+
+<body>
+    <header>
+        <nav class="bg-white shadow-sm fixed w-full z-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <!-- Logo + nome -->
+                    <div class="flex items-center">
+                        <img class="h-8 w-8" src="../assets/img/Foto de perfil para redes sociais gradiente simples.png"
+                            alt="Logo Aproxima+">
+                        <span class="ml-2 text-xl font-bold text-blue-700">Aproxima</span>
+                        <span class="ml-1 text-xl font-bold text-green-600">+</span>
+                    </div>
+
+                    <!-- Links de navegação (desktop) -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="../index.html"
+                            class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Início</a>
+                        <a href="./comofunciona.html"
+                            class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Como Funciona</a>
+                        <a href="./ONGS.html" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">ONGs</a>
+                        <a href="./causas.html"
+                            class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Causas</a>
+                        <a href="#" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Contato</a>
+                    </div>
+
+                    <!-- Botões de ação (desktop) -->
+                    <div class="hidden md:flex items-center space-x-3">
+                        <button
+                            class="bg-white text-green-600 border border-green-600 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</button>
+                        <button
+                            class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Cadastrar</button>
+                    </div>
+
+                    <!-- Menu hambúrguer (mobile) -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu mobile -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+                <div class="px-4 pt-4 pb-3 space-y-1">
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Início</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Como
+                        Funciona</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">ONGs</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Causas</a>
+                    <a href="#"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Contato</a>
+                </div>
+                <div class="px-4 pt-4 pb-4 border-t border-gray-200 flex flex-col gap-2">
+                    <button
+                        class="w-full bg-white text-green-700 border border-green-700 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</button>
+                    <button
+                        class="w-full bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-green-700 transition">Cadastrar</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+                Explore as causas que transformam o mundo
+            </h1>
+            <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                Descubra diferentes áreas onde você pode fazer a diferença. Cada causa representa uma oportunidade única
+                de impactar positivamente nossa sociedade.
+            </p>
+            <div class="flex justify-center">
+                <button onclick="scrollToSection('causas-principais')"
+                    class="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
+                    Explorar Causas
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Impacto coletivo das causas</h2>
+                <p class="text-xl text-gray-600">Juntos, estamos criando mudanças significativas em todo o Brasil</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6">
+                    <div class="impact-counter" data-target="1250000">0</div>
+                    <p class="text-gray-700 font-medium">Pessoas impactadas</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
+                    <div class="impact-counter" data-target="15000">0</div>
+                    <p class="text-gray-700 font-medium">Voluntários ativos</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6">
+                    <div class="impact-counter" data-target="850">0</div>
+                    <p class="text-gray-700 font-medium">Projetos em andamento</p>
+                </div>
+                <div class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6">
+                    <div class="impact-counter" data-target="120">0</div>
+                    <p class="text-gray-700 font-medium">Cidades atendidas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Causes -->
+    <section id="causas-principais" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Principais causas</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Conheça as áreas onde você pode contribuir e fazer a diferença na vida de milhares de pessoas.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Meio Ambiente -->
+                <div class="cause-card cause-meio-ambiente rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('meio-ambiente')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-.5-11.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-4.5 7h9v-2h-9v2z" />
+                        </svg>
+                        <span class="text-2xl font-bold">42</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Meio Ambiente</h3>
+                    <p class="text-green-100 mb-4">Preservação, sustentabilidade e conscientização ambiental</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Reflorestamento</p>
+                        <p>• Limpeza de rios</p>
+                        <p>• Educação ambiental</p>
+                    </div>
+                </div>
+
+                <!-- Educação -->
+                <div class="cause-card cause-educacao rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('educacao')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+                        </svg>
+                        <span class="text-2xl font-bold">56</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Educação</h3>
+                    <p class="text-blue-100 mb-4">Acesso à educação de qualidade para todos</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Reforço escolar</p>
+                        <p>• Alfabetização</p>
+                        <p>• Cursos profissionalizantes</p>
+                    </div>
+                </div>
+
+                <!-- Saúde -->
+                <div class="cause-card cause-saude rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('saude')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
+                        </svg>
+                        <span class="text-2xl font-bold">38</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Saúde</h3>
+                    <p class="text-pink-100 mb-4">Cuidados médicos e bem-estar para comunidades</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Campanhas de vacinação</p>
+                        <p>• Atendimento básico</p>
+                        <p>• Prevenção de doenças</p>
+                    </div>
+                </div>
+
+                <!-- Animais -->
+                <div class="cause-card cause-animais rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('animais')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+                        </svg>
+                        <span class="text-2xl font-bold">24</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Animais</h3>
+                    <p class="text-yellow-100 mb-4">Proteção e cuidado com animais abandonados</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Resgate de animais</p>
+                        <p>• Adoção responsável</p>
+                        <p>• Castração gratuita</p>
+                    </div>
+                </div>
+
+                <!-- Direitos Humanos -->
+                <div class="cause-card cause-direitos-humanos rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('direitos-humanos')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                        </svg>
+                        <span class="text-2xl font-bold">31</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Direitos Humanos</h3>
+                    <p class="text-purple-100 mb-4">Defesa da dignidade e igualdade</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Assistência jurídica</p>
+                        <p>• Combate à discriminação</p>
+                        <p>• Apoio a minorias</p>
+                    </div>
+                </div>
+
+                <!-- Cultura -->
+                <div class="cause-card cause-cultura rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('cultura')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+                        </svg>
+                        <span class="text-2xl font-bold">18</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Cultura</h3>
+                    <p class="text-red-100 mb-4">Preservação e promoção da cultura brasileira</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Oficinas de arte</p>
+                        <p>• Música e dança</p>
+                        <p>• Patrimônio cultural</p>
+                    </div>
+                </div>
+
+                <!-- Tecnologia -->
+                <div class="cause-card cause-tecnologia rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('tecnologia')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z" />
+                        </svg>
+                        <span class="text-2xl font-bold">15</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Tecnologia</h3>
+                    <p class="text-cyan-100 mb-4">Inclusão digital e inovação social</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Cursos de informática</p>
+                        <p>• Desenvolvimento web</p>
+                        <p>• Robótica educacional</p>
+                    </div>
+                </div>
+
+                <!-- Esporte -->
+                <div class="cause-card cause-esporte rounded-2xl p-8 text-white cursor-pointer"
+                    onclick="openCauseModal('esporte')">
+                    <div class="flex items-center justify-between mb-6">
+                        <svg class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                        <span class="text-2xl font-bold">22</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Esporte</h3>
+                    <p class="text-lime-100 mb-4">Promoção da saúde através do esporte</p>
+                    <div class="text-sm opacity-90">
+                        <p>• Escolinhas esportivas</p>
+                        <p>• Atividades físicas</p>
+                        <p>• Competições sociais</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured NGOs by Cause -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">ONGs em destaque por causa</h2>
+                <p class="text-xl text-gray-600">Organizações que estão fazendo a diferença em suas respectivas áreas
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Featured ONG 1 -->
+                <div class="featured-ong rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-.5-11.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-4.5 7h9v-2h-9v2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Água para Todos</h3>
+                            <p class="text-sm text-gray-600">Meio Ambiente</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-4">
+                        Garantindo acesso à água potável em comunidades rurais através de tecnologias sustentáveis.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">45 voluntários</span>
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition">
+                            Ver Perfil
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured ONG 2 -->
+                <div class="featured-ong rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Educação para Todos</h3>
+                            <p class="text-sm text-gray-600">Educação</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-4">
+                        Promovendo educação de qualidade para crianças em situação de vulnerabilidade social.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">78 voluntários</span>
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition">
+                            Ver Perfil
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured ONG 3 -->
+                <div class="featured-ong rounded-xl p-6 border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-pink-100 rounded-full p-3 mr-4">
+                            <svg class="h-8 w-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Saúde em Ação</h3>
+                            <p class="text-sm text-gray-600">Saúde</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-4">
+                        Levando atendimento médico básico e campanhas de prevenção para comunidades carentes.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-600">56 voluntários</span>
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition">
+                            Ver Perfil
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Get Involved -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Como se envolver</h2>
+                <p class="text-xl text-gray-600">Diferentes formas de contribuir com as causas que você mais se
+                    identifica</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Voluntariado -->
+                <div class="bg-white rounded-xl p-6 shadow-md text-center">
+                    <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Voluntariado</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Doe seu tempo e habilidades para projetos que fazem a diferença na comunidade.
+                    </p>
+                    <button
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700 transition">
+                        Encontrar Oportunidades
+                    </button>
+                </div>
+
+                <!-- Doações -->
+                <div class="bg-white rounded-xl p-6 shadow-md text-center">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Doações</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Contribua financeiramente ou com materiais para apoiar projetos sociais.
+                    </p>
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700 transition">
+                        Fazer Doação
+                    </button>
+                </div>
+
+                <!-- Mentoria -->
+                <div class="bg-white rounded-xl p-6 shadow-md text-center">
+                    <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Mentoria</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Compartilhe seu conhecimento profissional para capacitar pessoas e organizações.
+                    </p>
+                    <button
+                        class="bg-purple-600 text-white px-4 py-2 rounded-md text-sm hover:bg-purple-700 transition">
+                        Ser Mentor
+                    </button>
+                </div>
+
+                <!-- Divulgação -->
+                <div class="bg-white rounded-xl p-6 shadow-md text-center">
+                    <div class="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.50-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Divulgação</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Ajude a espalhar a palavra sobre causas importantes em suas redes sociais.
+                    </p>
+                    <button
+                        class="bg-orange-600 text-white px-4 py-2 rounded-md text-sm hover:bg-orange-700 transition">
+                        Compartilhar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Encontre sua causa</h2>
+            <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                Cada pessoa tem uma paixão única. Descubra como você pode usar suas habilidades e interesses para fazer
+                a diferença no mundo.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button
+                    class="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
+                    Explorar ONGs
+                </button>
+                <button
+                    class="bg-transparent text-white border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
+                    Cadastrar ONG
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <img class="h-8 w-8" src="../assets/img/Foto de perfil para redes sociais gradiente simples.png"
+                            alt="Logo Aproxima+">
+                        <span class="ml-2 text-xl font-bold text-green-700">Aproxima</span>
+                        <span class="ml-1 text-xl font-bold text-blue-400">+</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        conectando você a quem precisa.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Links Rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white">Início</a></li>
+                        <li><a href="./comofunciona.html" class="text-gray-400 hover:text-white">Como Funciona</a></li>
+                        <li><a href="./ONGS.html" class="text-gray-400 hover:text-white">Buscar ONGs</a></li>
+                        <li><a href="./causas.html" class="text-gray-400 hover:text-white">Explorar Causas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Histórias de Sucesso</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Recursos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Guia para ONGs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Guia para Voluntários</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contato</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-400">Passo Fundo, RS - Brasil</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-400">contato@aproximamais.com.br</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span class="text-gray-400">(54) 1234-5678</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2025 Aproxima+. Todos os direitos reservados.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Termos de Uso</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Política de Privacidade</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cause Modal -->
+    <div id="cause-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div id="modal-header" class="flex items-center">
+                        <!-- Content will be dynamically inserted -->
+                    </div>
+                    <button onclick="closeCauseModal()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="modal-content">
+                    <!-- Content will be dynamically inserted -->
+                </div>
+
+                <div class="flex space-x-4 mt-8">
+                    <button
+                        class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        Ver ONGs desta Causa
+                    </button>
+                    <button
+                        class="flex-1 bg-gray-100 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition">
+                        Compartilhar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll to sections
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Impact counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.impact-counter');
+
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target.toLocaleString('pt-BR');
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current).toLocaleString('pt-BR');
+                    }
+                }, 16);
+            });
+        }
+
+        // Trigger counter animation when section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.impact-counter').closest('section');
+        observer.observe(statsSection);
+
+        // Cause modal functionality
+        const causeData = {
+            'meio-ambiente': {
+                title: 'Meio Ambiente',
+                icon: '<svg class="h-12 w-12 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-.5-11.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zm-4.5 7h9v-2h-9v2z"/></svg>',
+                description: 'A preservação do meio ambiente é fundamental para garantir um futuro sustentável para as próximas gerações. ONGs ambientais trabalham em diversas frentes para proteger nossos recursos naturais.',
+                stats: ['42 ONGs ativas', '15.000 árvores plantadas', '8 rios despoluídos', '120 comunidades impactadas'],
+                activities: ['Reflorestamento e plantio de árvores', 'Limpeza de rios e praias', 'Educação ambiental em escolas', 'Campanhas de reciclagem', 'Proteção de animais silvestres', 'Desenvolvimento de tecnologias sustentáveis']
+            },
+            'educacao': {
+                title: 'Educação',
+                icon: '<svg class="h-12 w-12 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>',
+                description: 'A educação é a base para transformar vidas e comunidades. ONGs educacionais trabalham para garantir acesso à educação de qualidade para todos, especialmente para populações vulneráveis.',
+                stats: ['56 ONGs ativas', '25.000 crianças atendidas', '1.200 adultos alfabetizados', '180 cursos oferecidos'],
+                activities: ['Reforço escolar para crianças', 'Alfabetização de adultos', 'Cursos profissionalizantes', 'Distribuição de material escolar', 'Bolsas de estudo', 'Capacitação de professores']
+            },
+            'saude': {
+                title: 'Saúde',
+                icon: '<svg class="h-12 w-12 text-pink-600" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/></svg>',
+                description: 'O acesso à saúde é um direito fundamental. ONGs de saúde trabalham para levar cuidados médicos básicos e campanhas de prevenção para comunidades que mais precisam.',
+                stats: ['38 ONGs ativas', '80.000 atendimentos', '450 campanhas de vacinação', '95 postos de saúde apoiados'],
+                activities: ['Atendimento médico básico', 'Campanhas de vacinação', 'Prevenção de doenças', 'Distribuição de medicamentos', 'Educação em saúde', 'Apoio psicológico']
+            },
+            'animais': {
+                title: 'Proteção Animal',
+                icon: '<svg class="h-12 w-12 text-yellow-600" fill="currentColor" viewBox="0 0 24 24"><path d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"/></svg>',
+                description: 'A proteção animal é uma causa que mobiliza milhares de pessoas. ONGs trabalham no resgate, cuidado e adoção responsável de animais abandonados ou em situação de risco.',
+                stats: ['24 ONGs ativas', '3.200 animais resgatados', '2.800 adoções realizadas', '15.000 castrações gratuitas'],
+                activities: ['Resgate de animais abandonados', 'Feiras de adoção', 'Castração gratuita', 'Tratamento veterinário', 'Campanhas de conscientização', 'Denúncia de maus-tratos']
+            },
+            'direitos-humanos': {
+                title: 'Direitos Humanos',
+                icon: '<svg class="h-12 w-12 text-purple-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>',
+                description: 'A defesa dos direitos humanos é essencial para uma sociedade justa e igualitária. ONGs trabalham na proteção de grupos vulneráveis e na promoção da dignidade humana.',
+                stats: ['31 ONGs ativas', '12.000 pessoas assistidas', '850 casos jurídicos', '200 campanhas de conscientização'],
+                activities: ['Assistência jurídica gratuita', 'Combate à discriminação', 'Apoio a minorias', 'Defesa de refugiados', 'Promoção da igualdade', 'Educação em direitos']
+            },
+            'cultura': {
+                title: 'Cultura',
+                icon: '<svg class="h-12 w-12 text-red-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>',
+                description: 'A cultura é a alma de um povo. ONGs culturais trabalham para preservar tradições, promover a arte brasileira e democratizar o acesso à cultura em todas as comunidades.',
+                stats: ['18 ONGs ativas', '5.000 jovens atendidos', '120 oficinas culturais', '45 eventos realizados'],
+                activities: ['Oficinas de arte e música', 'Preservação do patrimônio', 'Festivais culturais', 'Teatro comunitário', 'Dança tradicional', 'Literatura e contação de histórias']
+            },
+            'tecnologia': {
+                title: 'Tecnologia e Inclusão Digital',
+                icon: '<svg class="h-12 w-12 text-cyan-600" fill="currentColor" viewBox="0 0 24 24"><path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/></svg>',
+                description: 'A inclusão digital é fundamental no mundo moderno. ONGs de tecnologia trabalham para democratizar o acesso à informação e capacitar pessoas com habilidades digitais.',
+                stats: ['15 ONGs ativas', '8.000 pessoas capacitadas', '50 laboratórios de informática', '200 cursos oferecidos'],
+                activities: ['Cursos de informática básica', 'Desenvolvimento web', 'Robótica educacional', 'Inclusão digital para idosos', 'Programação para jovens', 'Manutenção de computadores']
+            },
+            'esporte': {
+                title: 'Esporte e Lazer',
+                icon: '<svg class="h-12 w-12 text-lime-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>',
+                description: 'O esporte transforma vidas e fortalece comunidades. ONGs esportivas promovem a saúde, disciplina e inclusão social através de atividades físicas e competições.',
+                stats: ['22 ONGs ativas', '6.500 crianças atendidas', '35 modalidades oferecidas', '180 competições organizadas'],
+                activities: ['Escolinhas esportivas', 'Competições comunitárias', 'Atividades físicas para idosos', 'Esporte adaptado', 'Formação de atletas', 'Eventos esportivos sociais']
+            }
+        };
+
+        function openCauseModal(causeId) {
+            const modal = document.getElementById('cause-modal');
+            const modalHeader = document.getElementById('modal-header');
+            const modalContent = document.getElementById('modal-content');
+            const data = causeData[causeId];
+
+            if (!data) return;
+
+            modalHeader.innerHTML = `
+                <div class="bg-gray-100 rounded-full p-3 mr-4">
+                    ${data.icon}
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">${data.title}</h2>
+                    <p class="text-gray-600">Conheça mais sobre esta causa</p>
+                </div>
+            `;
+
+            modalContent.innerHTML = `
+                <div class="mb-6">
+                    <p class="text-gray-700 leading-relaxed">${data.description}</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    ${data.stats.map(stat => `
+                        <div class="bg-gray-50 rounded-lg p-4 text-center">
+                            <p class="text-sm text-gray-600">${stat}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Principais atividades:</h3>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        ${data.activities.map(activity => `
+                            <div class="flex items-start">
+                                <svg class="h-5 w-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-gray-700 text-sm">${activity}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCauseModal() {
+            const modal = document.getElementById('cause-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('cause-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeCauseModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeCauseModal();
+            }
+        });
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9580206f965e1aad',t:'MTc1MTMxMjMzNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
