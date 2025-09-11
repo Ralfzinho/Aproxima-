@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aproxima+ - Conectando Voluntários e ONGs</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo-aproxima.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -166,7 +167,7 @@
             <!-- Logo Icon -->
             <div class="flex justify-center mb-8">
                 <div class="logo-glow pulse-animation">
-                    <img class="h-32 w-32" src="{{ asset('img/foto_principal.png') }}" alt="Logo">
+                    <img class="h-32 w-32" src="{{ asset('img/logo-aproxima.png') }}" alt="Logo">
 
                 </div>
             </div>
@@ -262,7 +263,7 @@
             // Simula carregamento e depois redireciona
             setTimeout(() => {
                 // Aqui você redirecionaria para a página principal
-                 window.location.href = "{{ route(name: 'dashboard') }}";
+                 window.location.href = "{{ route(name: 'inicio') }}";
                 button.innerHTML = originalContent;
                 button.disabled = false;
             }, 2000);

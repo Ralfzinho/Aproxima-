@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
+Route::view('index', 'index')
     ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+    ->name('inicio');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -24,4 +24,5 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::resource('ajudas', AjudaController::class);
 Route::resource('causas', CausaController::class);
+
 require __DIR__.'/auth.php';
