@@ -7,6 +7,14 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
+
+Route::get('/dashboard', function () {
+    // Retorne a view do dashboard
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
