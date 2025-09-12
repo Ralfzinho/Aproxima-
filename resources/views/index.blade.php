@@ -7,7 +7,8 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo-aproxima.png') }}">
     <title>Aproxima+ conectando você a quem precisa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    @vite(['resources/css/index.css','resources/css/main.css'])
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 
 <body>
