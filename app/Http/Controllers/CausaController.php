@@ -13,7 +13,7 @@ class CausaController extends Controller
     public function index()
     {
         $causas = Causa::all();
-        return view("causas.index", compact("causas"));    
+        return view("causas", compact("causas"));    
     }
 
     /**
