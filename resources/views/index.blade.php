@@ -31,10 +31,12 @@
                         sua causa e comece a transformar vidas hoje.
                     </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="{{ route('inicio') }}" class="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
+                        <a href="{{ route('inicio') }}"
+                            class="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
                             Quero Ajudar
                         </a>
-                        <a href="{{ route('inicio') }}" class="bg-transparent text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
+                        <a href="{{ route('inicio') }}"
+                            class="bg-transparent text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
                             Sou uma ONG
                         </a>
                     </div>
@@ -46,7 +48,8 @@
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-medium mb-2">O que você procura?</label>
-                                <select name="causa" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <select name="causa"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
                                     <option value="">Todas as causas</option>
                                     <option value="Meio Ambiente">Meio Ambiente</option>
                                     <option value="Educação">Educação</option>
@@ -58,7 +61,8 @@
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-medium mb-2">Localização</label>
-                                <select name="localizacao" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <select name="localizacao"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
                                     <option value="">Todas as regiões</option>
                                     <option value="Norte">Norte</option>
                                     <option value="Nordeste">Nordeste</option>
@@ -70,7 +74,8 @@
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-medium mb-2">Tipo de ajuda</label>
-                                <select name="tipo" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <select name="tipo"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
                                     <option value="">Todos os tipos</option>
                                     <option value="Voluntariado">Voluntariado</option>
                                     <option value="Doação">Doação</option>
@@ -79,7 +84,8 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-md font-medium hover:bg-green-700 transition">
+                            <button type="submit"
+                                class="w-full bg-green-600 text-white py-3 rounded-md font-medium hover:bg-green-700 transition">
                                 Buscar ONGs
                             </button>
                         </form>
@@ -91,58 +97,75 @@
         {{-- Botão de Ajuda --}}
         <button id="ajuda-botao" onclick="toggleAjudaPainel()"
             class="fixed bottom-6 right-6 z-30 flex items-center justify-center hero-gradient text-white px-1 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
-            <svg class="ml-2 h-6 w-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="ml-2 h-6 w-6 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span class="ml-2 whitespace-nowrap overflow-hidden max-w-0 group-hover:max-w-xs opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out font-medium">
+            <span
+                class="ml-2 whitespace-nowrap overflow-hidden max-w-0 group-hover:max-w-xs opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out font-medium">
                 Precisa de ajuda?
             </span>
         </button>
 
         {{-- Painel lateral de ajuda --}}
-        <div id="ajuda-painel" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div id="ajuda-painel"
+            class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
             <div class="p-6 h-full flex flex-col overflow-y-auto">
                 {{-- Botão fechar --}}
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-gray-800">Como podemos ajudar?</h2>
                     <button onclick="toggleAjudaPainel()" class="text-gray-400 hover:text-gray-700 transition">
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
                 {{-- Perguntas frequentes --}}
                 <div class="mb-6">
-                    <h3 class="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wide">Perguntas Frequentes</h3>
+                    <h3 class="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wide">Perguntas Frequentes
+                    </h3>
                     <div class="space-y-2">
-                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm" onclick="fillTextarea('Como me candidato para ser voluntário?')">📝 Como me candidato para ser voluntário?</button>
-                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm" onclick="fillTextarea('Como encontro ONGs na minha região?')">📍 Como encontro ONGs na minha região?</button>
-                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm" onclick="fillTextarea('Como funciona o processo de seleção?')">⚡ Como funciona o processo de seleção?</button>
-                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm" onclick="fillTextarea('Problemas técnicos com a plataforma')">🔧 Problemas técnicos com a plataforma</button>
+                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm"
+                            onclick="fillTextarea('Como me candidato para ser voluntário?')">📝 Como me candidato para
+                            ser voluntário?</button>
+                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm"
+                            onclick="fillTextarea('Como encontro ONGs na minha região?')">📍 Como encontro ONGs na minha
+                            região?</button>
+                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm"
+                            onclick="fillTextarea('Como funciona o processo de seleção?')">⚡ Como funciona o processo de
+                            seleção?</button>
+                        <button class="w-full text-left p-3 rounded-lg hover:bg-green-400 transition text-sm"
+                            onclick="fillTextarea('Problemas técnicos com a plataforma')">🔧 Problemas técnicos com a
+                            plataforma</button>
                     </div>
                 </div>
 
                 {{-- Formulário --}}
                 <div class="flex-1 flex flex-col">
-                    <h3 class="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wide">Descreva sua Dúvida</h3>
+                    <h3 class="text-sm font-semibold text-gray-600 mb-3 uppercase tracking-wide">Descreva sua Dúvida
+                    </h3>
                     <div class="flex-1 flex flex-col space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo</label>
                             <input type="text" id="help-name" placeholder="Digite seu nome completo"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                required>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                             <input type="email" id="help-email" placeholder="seu.email@exemplo.com"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                required>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Ajuda</label>
-                            <select id="help-type" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <select id="help-type"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">Selecione o tipo de ajuda</option>
                                 <option value="candidatura">Problemas com candidaturas</option>
                                 <option value="perfil">Dificuldades com o perfil</option>
@@ -158,7 +181,8 @@
                             class="flex-1 w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                             placeholder="Digite sua dúvida ou selecione uma das Perguntas Frequentes acima..."></textarea>
 
-                        <button id="ajuda-mensagem-enviada" onclick="mensagemAjudaEnviada()" class="w-full hero-gradient text-white py-3 rounded-lg font-semibold transition hover:shadow-lg">
+                        <button id="ajuda-mensagem-enviada" onclick="mensagemAjudaEnviada()"
+                            class="w-full hero-gradient text-white py-3 rounded-lg font-semibold transition hover:shadow-lg">
                             Enviar Mensagem
                         </button>
                     </div>
@@ -176,7 +200,9 @@
         </div>
 
         {{-- Overlay fora do painel --}}
-        <div id="Ajuda-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleAjudaPainel()"></div>
+        <div id="Ajuda-overlay"
+            class="fixed inset-0 bg-black bg-opacity-50 z-40 opacity-0 pointer-events-none transition-opacity duration-300"
+            onclick="toggleAjudaPainel()"></div>
     </section>
 
     {{-- Estatísticas --}}
@@ -209,7 +235,9 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900">Como funciona</h2>
                 <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-                    Com o Aproxima +, você encontra ONGs que combinam com seus valores, se conecta com causas que tocam seu coração e contribui da forma que puder — seja com seu tempo, talento ou doação. Em poucos passos, você faz a diferença.
+                    Com o Aproxima +, você encontra ONGs que combinam com seus valores, se conecta com causas que tocam
+                    seu coração e contribui da forma que puder — seja com seu tempo, talento ou doação. Em poucos
+                    passos, você faz a diferença.
                 </p>
             </div>
 
@@ -217,31 +245,37 @@
                 <div class="text-center">
                     <div class="bg-green-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                         <svg class="h-10 w-10 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                            <path
+                                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">1. Descubra</h3>
-                    <p class="text-gray-600">Pesquise ONGs por causa, localização ou tipo de ajuda que você deseja oferecer.</p>
+                    <p class="text-gray-600">Pesquise ONGs por causa, localização ou tipo de ajuda que você deseja
+                        oferecer.</p>
                 </div>
 
                 <div class="text-center">
                     <div class="bg-green-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                         <svg class="h-10 w-10 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                            <path
+                                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">2. Conecte-se</h3>
-                    <p class="text-gray-600">Entre em contato com as ONGs que combinam com seus interesses e valores.</p>
+                    <p class="text-gray-600">Entre em contato com as ONGs que combinam com seus interesses e valores.
+                    </p>
                 </div>
 
                 <div class="text-center">
                     <div class="bg-green-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                         <svg class="h-10 w-10 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">3. Contribua</h3>
-                    <p class="text-gray-600">Doe seu tempo, habilidades ou recursos e acompanhe o impacto da sua contribuição.</p>
+                    <p class="text-gray-600">Doe seu tempo, habilidades ou recursos e acompanhe o impacto da sua
+                        contribuição.</p>
                 </div>
             </div>
         </div>
@@ -252,7 +286,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900">Causas em destaque</h2>
-                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Explore algumas das causas mais populares e descubra como você pode ajudar.</p>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Explore algumas das causas mais populares e
+                    descubra como você pode ajudar.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -349,7 +384,8 @@
             </div>
 
             <div class="text-center mt-12">
-                <a href="{{ route('inicio') }}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                <a href="{{ route('inicio') }}"
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                     Ver todas as causas
                 </a>
             </div>
@@ -361,7 +397,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900">ONGs em destaque</h2>
-                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Conheça algumas das organizações que estão fazendo a diferença em suas comunidades.</p>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Conheça algumas das organizações que estão
+                    fazendo a diferença em suas comunidades.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -485,7 +522,8 @@
             </div>
 
             <div class="text-center mt-12">
-                <a href="{{ route('inicio') }}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                <a href="{{ route('inicio') }}"
+                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
                     Ver todas as ONGs
                 </a>
             </div>
@@ -497,7 +535,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900">O que dizem sobre nós</h2>
-                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Histórias de pessoas e organizações que se conectaram através da nossa plataforma.</p>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">Histórias de pessoas e organizações que se
+                    conectaram através da nossa plataforma.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -593,8 +632,12 @@
                 Junte-se a milhares de pessoas e organizações que estão transformando o mundo, uma ação de cada vez.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="{{ route('inicio') }}" class="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">Quero ser voluntário</a>
-                <a href="{{ route('inicio') }}" class="bg-transparent text-white border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">Cadastrar minha ONG</a>
+                <a href="{{ route('inicio') }}"
+                    class="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">Quero
+                    ser voluntário</a>
+                <a href="{{ route('inicio') }}"
+                    class="bg-transparent text-white border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">Cadastrar
+                    minha ONG</a>
             </div>
         </div>
     </section>
@@ -605,14 +648,18 @@
             <div class="bg-gray-50 rounded-2xl p-8 md:p-12 shadow-sm">
                 <div class="text-center mb-8">
                     <h2 class="text-2xl font-bold text-gray-900 mb-2">Fique por dentro das novidades</h2>
-                    <p class="text-gray-600">Receba atualizações sobre novas ONGs, causas e oportunidades de voluntariado.</p>
+                    <p class="text-gray-600">Receba atualizações sobre novas ONGs, causas e oportunidades de
+                        voluntariado.</p>
                 </div>
                 <div class="max-w-xl mx-auto">
                     <form class="flex flex-col sm:flex-row gap-4">
-                        <input type="email" placeholder="Seu e-mail" class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">Inscrever-se</button>
+                        <input type="email" placeholder="Seu e-mail"
+                            class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <button type="submit"
+                            class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition">Inscrever-se</button>
                     </form>
-                    <p class="text-xs text-gray-500 mt-3 text-center">Ao se inscrever, você concorda com nossa Política de Privacidade.</p>
+                    <p class="text-xs text-gray-500 mt-3 text-center">Ao se inscrever, você concorda com nossa Política
+                        de Privacidade.</p>
                 </div>
             </div>
         </div>

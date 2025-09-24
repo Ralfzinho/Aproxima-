@@ -1,8 +1,8 @@
 // Help Panel Functions
 function toggleAjudaPainel() {
-    const panel = document.getElementById('ajuda-painel'); 
+    const panel = document.getElementById('ajuda-painel');
     const overlay = document.getElementById('Ajuda-overlay');
-    const button = document.getElementById('ajuda-botao'); 
+    const button = document.getElementById('ajuda-botao');
 
     if (panel.classList.contains('translate-x-0')) {
         panel.classList.remove('translate-x-0');

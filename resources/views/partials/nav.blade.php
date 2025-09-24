@@ -21,7 +21,7 @@
       {{-- Botões de ação (desktop) --}}
       <div class="hidden md:flex items-center space-x-3">
         <a href="{{ route('inicio') }}" class="bg-white text-green-600 border border-green-600 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</a>
-        <a href="{{ route('inicio') }}" class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Cadastrar</a>
+        <a href="{{ route('cadastro') }}" class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Cadastrar</a>
       </div>
 
       {{-- Menu hambúrguer (mobile) --}}
@@ -46,7 +46,7 @@
     </div>
     <div class="px-4 pt-4 pb-4 border-t border-gray-200 flex flex-col gap-2">
       <a href="{{ route('inicio') }}" class="bg-white text-green-600 border border-green-600 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</a>
-      <a href="{{ route('inicio') }}" class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Cadastrar</a>
+      <a href="{{ route('cadastro') }}" class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Cadastrar</a>
     </div>
   </div>
 </nav>
