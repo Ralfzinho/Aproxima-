@@ -22,7 +22,12 @@ Route::view('/cadastro_voluntario', 'cadastro_voluntario')->name('cadastro_volun
 Route::view('/cadastro_ong', 'cadastro_ong')->name('cadastro_ong');
 
 
-
+Route::middleware(['auth'])->group(function () {
+    // Outras rotas protegidas...
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
