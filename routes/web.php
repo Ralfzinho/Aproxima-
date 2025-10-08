@@ -17,6 +17,7 @@ Route::middleware(['auth'])->group(function () {
 Route::view('/', 'welcome')->name('home');
 Route::view('/como-funciona', 'comofunciona')->name('como-funciona');
 Route::view('/ongs', 'ongs')->name('ongs');
+Route::view('/infocausas', 'infocausas')->name('causas');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
 Route::view('/cadastro_voluntario', 'cadastro_voluntario')->name('cadastro_voluntario');
 Route::view('/cadastro_ong', 'cadastro_ong')->name('cadastro_ong');

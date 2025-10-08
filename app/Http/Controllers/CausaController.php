@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\causa;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CausaController extends Controller
 {
@@ -13,7 +14,7 @@ class CausaController extends Controller
     public function index()
     {
         $causas = Causa::all();
-        return view("causas", compact("causas"));    
+        return view("causas.index", compact("causas"));
     }
 
     /**
@@ -29,9 +30,16 @@ class CausaController extends Controller
      */
     public function store(Request $request)
     {
-        $causa = new Causa ([
-            'nome' => $request->input('nome'),
+        $request->validate([
+            'nome' => 'required|string|max:255|unique:causas,nome',
+            'descricao' => 'required|string',
         ]);
+
+        $causa = new Causa([
+            'nome' => $request->input('nome'),
+            'descricao' => $request->input('descricao'),
+        ]);
+
         $causa->save();
         return redirect()->route('causas.index');
     }
@@ -41,7 +49,8 @@ class CausaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $causa = Causa::findOrFail($id);
+        return view('causa.show', compact('causa'));
     }
 
     /**
@@ -49,7 +58,8 @@ class CausaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $causa = Causa::findOrFail($id);
+        return view('causas.edit', compact('causa'));
     }
 
     /**
@@ -57,7 +67,26 @@ class CausaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nome' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('causas', 'nome')->ignore($id),
+            ],
+        ]);
+
+        // Busca a causa pelo ID
+        $causa = causa::findOrFail($id);
+
+        // Atualiza com os novos valores
+        $causa->update([
+            'nome' => $request->nome
+        ]);
+
+        // Redireciona de volta para a lista com mensagem de sucesso
+        return redirect()->route('causas.index')
+            ->with('success', 'causa atualizada com sucesso!');
     }
 
     /**
@@ -65,6 +94,17 @@ class CausaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $ajuda = Causa::findOrFail($id);
+
+        try {
+            $ajuda->delete(); 
+            return redirect()
+                ->route('causa.index')
+                ->with('success', 'Ajuda excluída com sucesso!');
+        } catch (\Throwable $e) {
+            return redirect()
+                ->route('causa.index')
+                ->withErrors('Não foi possível excluir a ajuda. ' . $e->getMessage());
+        }
     }
 }

@@ -14,7 +14,7 @@ class AjudaController extends Controller
     public function index()
     {
         $ajudas = ajuda::all();
-        return view("ajudas.index", compact("ajudas"));    
+        return view("ajudas.index", compact("ajudas"));
     }
 
     /**
@@ -32,11 +32,14 @@ class AjudaController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255|unique:ajudas,nome',
+            'descricao' => 'required|string',
         ]);
 
-        $ajuda = new Ajuda ([
+        $ajuda = new Ajuda([
             'nome' => $request->input('nome'),
+            'descricao' => $request->input('descricao'),
         ]);
+        
         $ajuda->save();
         return redirect()->route('ajudas.index');
     }
@@ -55,7 +58,7 @@ class AjudaController extends Controller
      */
     public function edit(string $id)
     {
-        $ajuda = \App\Models\Ajuda::findOrFail($id);
+        $ajuda = ajuda::findOrFail($id);
         return view('ajudas.edit', compact('ajuda'));
     }
 
@@ -73,17 +76,17 @@ class AjudaController extends Controller
             ],
         ]);
 
-    // Busca a ajuda pelo ID
-        $ajuda = \App\Models\Ajuda::findOrFail($id);
+        // Busca a ajuda pelo ID
+        $ajuda = Ajuda::findOrFail($id);
 
-    // Atualiza com os novos valores
+        // Atualiza com os novos valores
         $ajuda->update([
-        'nome' => $request->nome
+            'nome' => $request->nome
         ]);
 
-    // Redireciona de volta para a lista com mensagem de sucesso
+        // Redireciona de volta para a lista com mensagem de sucesso
         return redirect()->route('ajudas.index')
-         ->with('success', 'Ajuda atualizada com sucesso!');
+            ->with('success', 'Ajuda atualizada com sucesso!');
     }
 
     /**
@@ -98,11 +101,11 @@ class AjudaController extends Controller
             return redirect()
                 ->route('ajudas.index')
                 ->with('success', 'Ajuda excluída com sucesso!');
-        }   catch (\Throwable $e) {
+        } catch (\Throwable $e) {
             // Se der erro de FK (sem cascade) ou outro problema, volta com mensagem
             return redirect()
                 ->route('ajudas.index')
-                ->withErrors('Não foi possível excluir a ajuda. '.$e->getMessage());
+                ->withErrors('Não foi possível excluir a ajuda. ' . $e->getMessage());
         }
     }
 }

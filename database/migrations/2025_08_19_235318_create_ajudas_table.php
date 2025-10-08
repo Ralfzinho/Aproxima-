@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ajudas', function (Blueprint $table) {
             $table->id(); // id da ajuda (PK)
             $table->string('nome'); // Exemplo: Voluntariado, Doação, Mentoria, Serviços Profissionais
+            $table->string('descricao'); // Exemplo: Voluntariado, Doação, Mentoria, Serviços Profissionais
             $table->timestamps();
         });
     }
