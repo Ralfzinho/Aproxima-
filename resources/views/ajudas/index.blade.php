@@ -6,15 +6,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/admin_ajuda.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     @include('partials.header')
     {{-- Script para abrir/fechar o menu mobile --}}
     {{-- JS original em public/assets --}}
-    <script src="{{ asset('js/app.js') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/btn-excluir.js') }}"></script>
 
-    </script>
 
     <div class="pt-16 flex">
         <!-- Sidebar -->
@@ -113,31 +114,31 @@
 
                         <div id="ajudas-list" class="space-y-4">
                             @forelse ($ajudas as $ajuda)
-                                <div class="type-card bg-white border rounded-lg p-4 flex items-center justify-between">
-                                    <div>
-                                        <div class="font-semibold text-gray-800">{{ $ajuda->nome }}</div>
-                                        @if($ajuda->descricao)
-                                            <div class="text-sm text-gray-600">{{ $ajuda->descricao }}</div>
-                                        @endif
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <a href="{{ route('ajudas.edit', $ajuda->id) }}"
-                                            class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
-                                            Editar
-                                        </a>
-                                        <form action="{{ route('ajudas.destroy', $ajuda->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
-                                                onclick="return confirm('Tem certeza que deseja excluir esta ajuda?')">
-                                                Excluir
-                                            </button>
-                                        </form>
-                                    </div>
+                            <div class="type-card bg-white border rounded-lg p-4 flex items-center justify-between">
+                                <div>
+                                    <div class="font-semibold text-gray-800">{{ $ajuda->nome }}</div>
+                                    @if($ajuda->descricao)
+                                    <div class="text-sm text-gray-600">{{ $ajuda->descricao }}</div>
+                                    @endif
                                 </div>
+                                <div class="flex items-center space-x-2">
+                                    <a href="{{ route('ajudas.edit', $ajuda->id) }}"
+                                        class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
+                                        Editar
+                                    </a>
+                                    <form action="{{ route('ajudas.destroy', $ajuda->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+                                            data-swal-delete>
+                                            Excluir
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                             @empty
-                                <div class="text-gray-500">Nenhuma ajuda cadastrada.</div>
+                            <div class="text-gray-500">Nenhuma ajuda cadastrada.</div>
                             @endforelse
                         </div>
                     </div>
@@ -178,6 +179,14 @@
 
 
 
+
+    @if(session('success'))
+    <div id="flash-success" data-message="{{ session('success') }}" class="hidden"></div>
+    @endif
+
+    @if($errors->any())
+    <div id="flash-error" data-message="{{ implode(' | ', $errors->all()) }}" class="hidden"></div>
+    @endif
 
     @include('partials.footer')
 </body>
