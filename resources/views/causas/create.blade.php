@@ -1,15 +1,57 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo-aproxima.png') }}">
+    <title>Aproxima+ conectando você a quem precisa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/admin_ajuda.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+</head>
+
 <body>
-     <div class="container">
-         <h1>Nova Causa</h1>
-         <form action="{{ route('causas.store') }}" method="POST">
-             <!-- Token CSRF para proteção contra ataques CSRF -->
-             @csrf
-             <div class="form-group">
-                <label for="nome">Nome da causa:</label>
-                <input type="text" name="nome">
+    @include('partials.header')
+    {{-- Script para abrir/fechar o menu mobile --}}
+    {{-- JS original em public/assets --}}
+    <script src="{{ asset('js/app.js') }}">
+
+    </script>
+    <main class="flex justify-center items-start p-20">
+        <div class="lg:col-span-1 w-full max-w-md">
+            <div class="admin-card rounded-none p-6 border border-gray-300 shadow-lg h-full">
+                <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">Nova causa: </h2>
+                <form action="{{ route('causas.store') }}" method="POST" class="space-y-4">
+                    @csrf
+                    <div>
+                        <label for="nome" class="block text-sm font-medium text-gray-700 mb-2">Nome da causa</label>
+                        <input type="text" name="nome" id="nome" placeholder="Ex: Educação"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="descricao" class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
+                        <textarea name="descricao" id="descricao" rows="3" placeholder="Descreva esta causa..."
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required>
+                        </textarea>
+                    </div>
+
+                    <div class="flex space-x-3">
+                        <button type="submit"
+                            class="w-full btn-primary text-white py-3 px-4 rounded-lg font-semibold transition">
+                            Adicionar causa
+                        </button>
+                        <a href="{{ route('causas.index') }}"
+                            class="w-full btn-secondary text-white py-3 px-4 rounded-lg font-semibold transition bg-gray-400 hover:bg-gray-500 text-center">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
             </div>
-             <button type="submit" class="btn btn-success">Salvar</button>
-             <a href="{{ route('causas.index') }}" class="btn btn-secondary">Cancelar</a>
-             </form>
-         </div>
-     </body>
+        </div>
+    </main>
+
+    @include('partials.footer')
+</body>
+
+</html>

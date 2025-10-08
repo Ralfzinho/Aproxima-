@@ -18,8 +18,7 @@
     <main class="flex justify-center items-start p-20">
         <div class="lg:col-span-1 w-full max-w-md">
             <div class="admin-card rounded-none p-6 border border-gray-300 shadow-lg h-full">
-                <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">Nova Ajuda</h2>
-
+                <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">Nova Ajuda: </h2>
                 <form action="{{ route('ajudas.store') }}" method="POST" class="space-y-4">
                     @csrf
                     <div>
@@ -33,21 +32,8 @@
                         <label for="descricao" class="block text-sm font-medium text-gray-700 mb-2">Descrição</label>
                         <textarea name="descricao" id="descricao" rows="3" placeholder="Descreva esta ajuda..."
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                            required></textarea>
-                    </div>
-
-                    <!-- Preview (opcional) -->
-                    <div class="border-t pt-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Preview</label>
-                        <div id="ajuda-preview" class="flex items-center p-3 bg-gray-50 rounded-lg">
-                            <div class="icon-preview bg-blue-100 text-blue-600 mr-3">
-                                📌
-                            </div>
-                            <div>
-                                <div class="font-medium text-gray-800">Nome da Ajuda</div>
-                                <div class="text-sm text-gray-600">Descrição aparecerá aqui</div>
-                            </div>
-                        </div>
+                            required>
+                        </textarea>
                     </div>
 
                     <div class="flex space-x-3">

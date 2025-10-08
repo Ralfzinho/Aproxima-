@@ -6,16 +6,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('css/admin_ajuda.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     @include('partials.header')
     {{-- Script para abrir/fechar o menu mobile --}}
     {{-- JS original em public/assets --}}
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/btn-excluir.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}">
 
+    </script>
 
     <div class="pt-16 flex">
         <!-- Sidebar -->
@@ -24,7 +23,7 @@
         <div class="flex-1 p-8">
             <!-- Header da Página -->
             <div class="mb-8">
-                <h1 class="text-3xl font-bold text-white mb-2">Gerenciar Tipos de Ajuda</h1>
+                <h1 class="text-3xl font-bold text-white mb-2">Gerenciar Tipos de causas</h1>
                 <p class="text-green-100">Cadastre e gerencie as categorias de voluntariado disponíveis na plataforma
                 </p>
             </div>
@@ -36,7 +35,7 @@
                         <div>
                             <p class="text-gray-600 text-sm">Total de Tipos</p>
                             <p class="text-2xl font-bold text-gray-800" id="total-types">
-                                {{ trans_choice(':count', ($ajudas instanceof \Illuminate\Pagination\LengthAwarePaginator) ? $ajudas->total() : $ajudas->count(), ['count' => ($ajudas instanceof \Illuminate\Pagination\LengthAwarePaginator) ? $ajudas->total() : $ajudas->count()]) }}
+                                {{ trans_choice(':count', ($causas instanceof \Illuminate\Pagination\LengthAwarePaginator) ? $causas->total() : $causas->count(), ['count' => ($causas instanceof \Illuminate\Pagination\LengthAwarePaginator) ? $causas->total() : $causas->count()]) }}
                             </p>
                         </div>
                         <div class="bg-blue-100 p-3 rounded-full">
@@ -95,13 +94,13 @@
             </div>
 
             <div class="grid lg:grid-cols-3 gap-8 mt-6">
-                <!-- Lista de Ajudas Existentes -->
+                <!-- Lista de causasExistentes -->
                 <div class="lg:col-span-2">
                     <div class="admin-card rounded-xl p-6">
                         <div class="flex items-center justify-between mb-6">
-                            <h2 class="text-xl font-semibold text-gray-800">Ajudas Cadastradas</h2>
+                            <h2 class="text-xl font-semibold text-gray-800">causas Cadastradas</h2>
                             <div class="flex items-center space-x-3">
-                                <input type="text" id="search-ajudas" placeholder="Buscar ajudas..."
+                                <input type="text" id="search-causas" placeholder="Buscar causas..."
                                     class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <select id="filter-status"
                                     class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -112,41 +111,41 @@
                             </div>
                         </div>
 
-                        <div id="ajudas-list" class="space-y-4">
-                            @forelse ($ajudas as $ajuda)
-                            <div class="type-card bg-white border rounded-lg p-4 flex items-center justify-between">
-                                <div>
-                                    <div class="font-semibold text-gray-800">{{ $ajuda->nome }}</div>
-                                    @if($ajuda->descricao)
-                                    <div class="text-sm text-gray-600">{{ $ajuda->descricao }}</div>
-                                    @endif
+                        <div id="causas-list" class="space-y-4">
+                            @forelse ($causas as $causa)
+                                <div class="type-card bg-white border rounded-lg p-4 flex items-center justify-between">
+                                    <div>
+                                        <div class="font-semibold text-gray-800">{{ $causa->nome }}</div>
+                                        @if($causa->descricao)
+                                            <div class="text-sm text-gray-600">{{ $causa->descricao }}</div>
+                                        @endif
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <a href="{{ route('causas.edit', $causa->id) }}"
+                                            class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
+                                            Editar
+                                        </a>
+                                        <form action="{{ route('causas.destroy', $causa->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+                                                onclick="return confirm('Tem certeza que deseja excluir esta causas?')">
+                                                Excluir
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="flex items-center space-x-2">
-                                    <a href="{{ route('ajudas.edit', $ajuda->id) }}"
-                                        class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition">
-                                        Editar
-                                    </a>
-                                    <form action="{{ route('ajudas.destroy', $ajuda->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
-                                            data-swal-delete>
-                                            Excluir
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
                             @empty
-                            <div class="text-gray-500">Nenhuma ajuda cadastrada.</div>
+                                <div class="text-gray-500">Nenhuma causas cadastrada.</div>
                             @endforelse
                         </div>
                     </div>
                 </div>
                 <div class="admin-card rounded-xl p-6">
-                    <a href="{{ route('ajudas.create') }}"
+                    <a href="{{ route('causas.create') }}"
                         class="w-full btn-primary text-white py-3 px-4 rounded-lg font-semibold transition text-center inline-block">
-                        Adicionar Nova Ajuda
+                        Adicionar Nova causas
                     </a>
                 </div>
             </div>
@@ -179,14 +178,6 @@
 
 
 
-
-    @if(session('success'))
-    <div id="flash-success" data-message="{{ session('success') }}" class="hidden"></div>
-    @endif
-
-    @if($errors->any())
-    <div id="flash-error" data-message="{{ implode(' | ', $errors->all()) }}" class="hidden"></div>
-    @endif
 
     @include('partials.footer')
 </body>

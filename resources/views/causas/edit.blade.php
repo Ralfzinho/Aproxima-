@@ -18,14 +18,14 @@
     <main class="flex justify-center items-start p-20">
         <div class="lg:col-span-1 w-full max-w-md">
             <div class="admin-card rounded-none p-6 border border-gray-300 shadow-lg h-full">
-                <h1 class="text-xl font-semibold text-gray-800 mb-6 text-center">Editar Ajuda</h1>
+                <h1 class="text-xl font-semibold text-gray-800 mb-6 text-center">Editar causa</h1>
 
-                <form action="{{ route('ajudas.update', $ajuda->id) }}" method="POST" class="space-y-4">
+                <form action="{{ route('causas.update', $causa->id) }}" method="POST" class="space-y-4">
                     @csrf
                     @method('PUT')
                     <div>
-                        <label for="nome" class="block text-sm font-medium text-gray-700 mb-2">Nome da Ajuda:</label>
-                        <input type="text" name="nome" value="{{ old('nome', $ajuda->nome) }}"
+                        <label for="nome" class="block text-sm font-medium text-gray-700 mb-2">Nome da causa:</label>
+                        <input type="text" name="nome" value="{{ old('nome', $causa->nome) }}"
                             class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             required>
                     </div>
@@ -33,7 +33,7 @@
                         <button type="submit"
                             class="w-full btn-primary text-white py-3 px-4 rounded-lg font-semibold transition">Atualizar
                         </button>
-                        <a href="{{ route('ajudas.index') }}"
+                        <a href="{{ route('causas.index') }}"
                             class="w-full btn-secondary text-white py-3 px-4 rounded-lg font-semibold transition bg-gray-400 hover:bg-gray-500 text-center"">Cancelar
                         </a>
                     </div>

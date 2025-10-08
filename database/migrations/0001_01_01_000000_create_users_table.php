@@ -17,13 +17,12 @@ return new class extends Migration
             $table->string('email', 150)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string(column: 'dta_nascimento');
 
-            // ---- Campos de perfil (opcionais, mas úteis ao Aproxima+) ----
             $table->string('telefone', 30)->nullable();
             $table->char('estado', 2)->nullable();
             $table->string('cidade', 100)->nullable();
 
-            // ---- Papel do usuário na plataforma ----
             $table->enum('tipo', ['voluntario', 'doador', 'representante', 'admin'])
                   ->default('voluntario');
 

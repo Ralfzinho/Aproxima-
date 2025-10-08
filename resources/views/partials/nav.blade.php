@@ -14,7 +14,7 @@
         <a href="{{ route('inicio') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Início</a>
         <a href="{{ route('como-funciona') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Como Funciona</a>
         <a href="{{ route('ongs') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">ONGs</a>
-        <a href="{{ route('causas.index') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Causas</a>
+        <a href="{{ route('causas') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Causas</a>
         <a href="{{ route('inicio') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Contato</a>
       </div>
 

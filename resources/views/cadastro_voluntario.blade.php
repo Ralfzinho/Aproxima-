@@ -65,16 +65,10 @@
                         </div>
 
                         <div class="max-w-2xl mx-auto space-y-6">
-                            <div class="grid md:grid-cols-2 gap-6">
+                            <div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nome *</label>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo *</label>
                                     <input type="text" id="firstName" name="firstName"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Sobrenome *</label>
-                                    <input type="text" id="lastName" name="lastName"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         required>
                                 </div>
@@ -558,7 +552,7 @@
 
         // Validation functions
         function validateStep1() {
-            const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'birthDate', 'state', 'city'];
+            const requiredFields = ['firstName', 'email', 'phone', 'birthDate', 'state', 'city'];
             let isValid = true;
 
             requiredFields.forEach(fieldId => {
