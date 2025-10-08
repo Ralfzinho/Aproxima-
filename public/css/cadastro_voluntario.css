@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(135deg, #00bc60 0%, #0051b5 100%);
+    min-height: 100vh;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.step-indicator {
+    transition: all 0.3s ease;
+}
+
+.step-indicator.active {
+    background-color: #0051b5;
+    color: white;
+}
+
+.step-indicator.completed {
+    background-color: #10b981;
+    color: white;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+.modal {
+    display: none;
+}
+
+.modal.show {
+    display: flex !important;
+}
+
+.interest-card {
+    transition: all 0.3s ease;
+}
+
+.interest-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

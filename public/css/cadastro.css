@@ -1,0 +1,45 @@
+body {
+    background: linear-gradient(135deg, #00bc60 0%, #0051b5 100%);
+    min-height: 100vh;
+}
+
+.profile-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+
+    /* Estados iniciais para animação */
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+
+.profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.profile-card.selected {
+    border-color: #0051b5;
+    background-color: #f0f9ff;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.2);
+}
+
+.feature-item {
+    transition: all 0.2s ease;
+}
+
+.profile-card:hover .feature-item {
+    transform: translateX(4px);
+}
+
+.cta-button {
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
