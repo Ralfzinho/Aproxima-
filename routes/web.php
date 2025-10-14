@@ -21,6 +21,7 @@ Route::view('/infocausas', 'infocausas')->name('causas');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
 Route::view('/cadastro_voluntario', 'cadastro_voluntario')->name('cadastro_voluntario');
 Route::view('/cadastro_ong', 'cadastro_ong')->name('cadastro_ong');
+Route::view('/admin', 'admin.index')->name('admin');
 
 
 Route::middleware(['auth'])->group(function () {
