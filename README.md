@@ -1,8 +1,8 @@
-# 🌱 DoaFácil / Aproxima+
+# 🌱  Aproxima+
 
 **Conectando pessoas e causas que transformam o mundo.**
 
-O **DoaFácil / Aproxima+** é uma plataforma desenvolvida para conectar **ONGs**, **doadores** e **voluntários**, tornando o processo de doação e apoio a causas sociais mais simples e acessível. O objetivo do projeto é **facilitar a solidariedade**, centralizando informações sobre organizações e permitindo que cada pessoa escolha como quer ajudar — seja com tempo, recursos ou conhecimento.
+O ** Aproxima+** é uma plataforma desenvolvida para conectar **ONGs**, **doadores** e **voluntários**, tornando o processo de doação e apoio a causas sociais mais simples e acessível. O objetivo do projeto é **facilitar a solidariedade**, centralizando informações sobre organizações e permitindo que cada pessoa escolha como quer ajudar — seja com tempo, recursos ou conhecimento.
 
 ---
 
