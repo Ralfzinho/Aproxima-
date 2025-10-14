@@ -16,6 +16,7 @@
         <a href="{{ route('ongs') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">ONGs</a>
         <a href="{{ route('causas') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Causas</a>
         <a href="{{ route('inicio') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Contato</a>
+        <a href="{{ route('admin') }}" class="text-blue-700 hover:text-green-600 px-3 py-2 font-medium">Admin_teste</a>
       </div>
 
       {{-- Botões de ação (desktop) --}}
