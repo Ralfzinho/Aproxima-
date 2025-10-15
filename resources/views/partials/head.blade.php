@@ -11,4 +11,5 @@
 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+<script src="https://cdn.tailwindcss.com"></script>
 @fluxAppearance
