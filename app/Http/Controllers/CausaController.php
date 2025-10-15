@@ -50,7 +50,7 @@ class CausaController extends Controller
     public function show(string $id)
     {
         $causa = Causa::findOrFail($id);
-        return view('causa.show', compact('causa'));
+        return view('causas.show', compact('causa'));
     }
 
     /**
@@ -94,17 +94,17 @@ class CausaController extends Controller
      */
     public function destroy(string $id)
     {
-        $ajuda = Causa::findOrFail($id);
+        $causa = Causa::findOrFail($id);
 
         try {
-            $ajuda->delete(); 
+            $causa->delete(); 
             return redirect()
-                ->route('causa.index')
-                ->with('success', 'Ajuda excluída com sucesso!');
+                ->route('causas.index')
+                ->with('success', 'Causa excluída com sucesso!');
         } catch (\Throwable $e) {
             return redirect()
-                ->route('causa.index')
-                ->withErrors('Não foi possível excluir a ajuda. ' . $e->getMessage());
+                ->route('causas.index')
+                ->withErrors('Não foi possível excluir a causa. ' . $e->getMessage());
         }
     }
 }
