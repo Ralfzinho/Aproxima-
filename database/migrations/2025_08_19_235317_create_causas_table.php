@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('causas', function (Blueprint $table) {
             $table->id(); // id_causa (chave primária)
             $table->string('nome'); // nome da causa (ex: Educação, Saúde, Meio Ambiente)
+            $table->string('descricao');
             $table->timestamps();
         });
     }
