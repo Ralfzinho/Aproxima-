@@ -1,0 +1,8 @@
+
+Como mandar para a new_main
+
+git fetch origin
+git checkout new_main           # se não existir local: git checkout -b new_main origin/new_main
+git pull origin new_main
+git merge origin/nomedabranch que iria enviar        # resolve conflitos se aparecerem
+git push origin new_main
