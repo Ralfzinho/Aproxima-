@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Causa;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\OngController;
 
 Route::middleware(['auth'])->group(function () {
     Route::view('/inicio', 'index')->name('inicio')->middleware('verified');
@@ -53,5 +54,6 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::resource('ajudas', AjudaController::class);
 Route::resource('causas', CausaController::class);
+Route::post('/ongs', [OngController::class, 'store'])->name('ongs.store');
 
 require __DIR__ . '/auth.php';

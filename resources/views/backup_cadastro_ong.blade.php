@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo-aproxima.png') }}">
     <title>Aproxima+ conectando você a quem precisa</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,21 +12,22 @@
     <link rel="stylesheet" href="{{ asset('css/cadastro_ong.css') }}">
 </head>
 
-
 <body>
     @include('partials.header')
     <script src="{{ asset('js/app.js') }}"></script>
 
-
+    <!-- Main Content -->
     <div class="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
+            <!-- Header -->
             <div class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-white mb-4">Cadastro de ONG</h1>
                 <p class="text-xl text-blue-100">Conecte sua organização com voluntários engajados</p>
             </div>
 
-
+            <!-- Registration Form Container -->
             <div class="form-container rounded-2xl shadow-2xl p-8 md:p-12">
+                <!-- Progress Bar -->
                 <div class="mb-8">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-sm font-medium text-gray-600">Progresso do cadastro</span>
@@ -39,7 +38,7 @@
                     </div>
                 </div>
 
-
+                <!-- Step Indicators -->
                 <div class="flex justify-center mb-12">
                     <div class="flex space-x-4">
                         <div
@@ -57,9 +56,7 @@
                     </div>
                 </div>
 
-
-                <form id="registration-form" action="/ongs" method="POST" enctype="multipart/form-data">
-                    @csrf
+                <form id="registration-form">
                     <!-- Step 1: Organization Information -->
                     <div class="form-step active" id="step-1">
                         <div class="text-center mb-8">
@@ -107,7 +104,7 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Site/Redes
                                         Sociais</label>
-                                    <input type="text" id="website" name="website"
+                                    <input type="url" id="website" name="website"
                                         placeholder="https://www.suaong.org.br"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                 </div>
@@ -189,7 +186,7 @@
                             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                                 <label
                                     class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="meio-ambiente"
+                                    <input type="checkbox" name="areas" value="meio-ambiente"
                                         class="mr-3 text-blue-600">
                                     <div class="flex items-center">
                                         <div class="bg-green-100 rounded-full p-2 mr-3">
@@ -204,7 +201,7 @@
 
                                 <label
                                     class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="educacao" class="mr-3 text-blue-600">
+                                    <input type="checkbox" name="areas" value="educacao" class="mr-3 text-blue-600">
                                     <div class="flex items-center">
                                         <div class="bg-blue-100 rounded-full p-2 mr-3">
                                             <svg class="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
@@ -217,7 +214,7 @@
 
                                 <label
                                     class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="saude" class="mr-3 text-blue-600">
+                                    <input type="checkbox" name="areas" value="saude" class="mr-3 text-blue-600">
                                     <div class="flex items-center">
                                         <div class="bg-pink-100 rounded-full p-2 mr-3">
                                             <svg class="h-5 w-5 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
@@ -231,7 +228,7 @@
 
                                 <label
                                     class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="animais" class="mr-3 text-blue-600">
+                                    <input type="checkbox" name="areas" value="animais" class="mr-3 text-blue-600">
                                     <div class="flex items-center">
                                         <div class="bg-yellow-100 rounded-full p-2 mr-3">
                                             <svg class="h-5 w-5 text-yellow-600" fill="currentColor"
@@ -246,7 +243,7 @@
 
                                 <label
                                     class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="direitos-humanos"
+                                    <input type="checkbox" name="areas" value="direitos-humanos"
                                         class="mr-3 text-blue-600">
                                     <div class="flex items-center">
                                         <div class="bg-purple-100 rounded-full p-2 mr-3">
@@ -262,7 +259,7 @@
 
                                 <label
                                     class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="assistencia-social"
+                                    <input type="checkbox" name="areas" value="assistencia-social"
                                         class="mr-3 text-blue-600">
                                     <div class="flex items-center">
                                         <div class="bg-orange-100 rounded-full p-2 mr-3">
@@ -328,22 +325,22 @@
                                     Procurados *</label>
                                 <div class="space-y-2">
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="presencial"
+                                        <input type="checkbox" name="volunteerTypes" value="presencial"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários presenciais</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="remoto"
+                                        <input type="checkbox" name="volunteerTypes" value="remoto"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários remotos</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="especializado"
+                                        <input type="checkbox" name="volunteerTypes" value="especializado"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários especializados (profissionais)</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="pontual"
+                                        <input type="checkbox" name="volunteerTypes" value="pontual"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários para ações pontuais</span>
                                     </label>
@@ -529,8 +526,7 @@
     </div>
 
     <!-- Success Modal -->
-    <div id="success-modal"
-        class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4">
+    <div id="success-modal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-8 text-center transform scale-95 transition-transform">
             <div class="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <svg class="h-10 w-10 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -550,9 +546,6 @@
     </div>
 
     <script>
-        let currentStep = 1;
-        const totalSteps = 4;
-
         // Progress update
         function updateProgress() {
             const progressBar = document.querySelector('.progress-bar');
@@ -640,7 +633,7 @@
         }
 
         function validateStep2() {
-            const areas = document.querySelectorAll('input[name="areas[]"]:checked');
+            const areas = document.querySelectorAll('input[name="areas"]:checked');
             const mission = document.getElementById('mission').value;
 
             if (areas.length === 0) {
@@ -660,7 +653,7 @@
         }
 
         function validateStep3() {
-            const volunteerTypes = document.querySelectorAll('input[name="volunteerTypes[]"]:checked');
+            const volunteerTypes = document.querySelectorAll('input[name="volunteerTypes"]:checked');
             const currentProjects = document.getElementById('currentProjects').value;
             const contactName = document.getElementById('contactName').value;
             const contactRole = document.getElementById('contactRole').value;
@@ -753,107 +746,68 @@
         }
 
         // Form submission
-        function csrfToken() {
-            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        }
-
-        document.getElementById('registration-form').addEventListener('submit', async function (e) {
+        document.getElementById('registration-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            console.log('Formulário enviado via JS');
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+
+            // Validate password requirements
+            if (!validatePassword(password)) {
+                alert('A senha não atende aos requisitos de segurança. Verifique os critérios destacados.');
+                document.getElementById('password').focus();
+                return;
+            }
+
+            // Check password match
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem.');
+                document.getElementById('confirmPassword').focus();
+                return;
+            }
+
+            // Check terms agreement
+            if (!terms) {
+                alert('Você deve concordar com os Termos de Uso e Política de Privacidade para continuar.');
+                document.getElementById('terms').focus();
+                return;
+            }
 
             const submitBtn = document.getElementById('submit-form');
             const originalText = submitBtn.textContent;
+
+            // Show loading
             submitBtn.textContent = 'Criando conta...';
             submitBtn.disabled = true;
 
-            const form = e.target;
-
-            // Limpa valores de inputs invisíveis e com tipo "url" ou inválidos
-            form.querySelectorAll('input').forEach(input => {
-                const isHidden = input.offsetParent === null;
-                const isInvalid = !input.validity.valid;
-                if (isHidden && isInvalid) {
-                    input.value = ''; // limpa o campo
-                }
-            });
-
-            // Corrige campos required invisíveis
-            form.querySelectorAll('[required]').forEach(el => {
-                if (el.offsetParent === null) {
-                    el.removeAttribute('required');
-                }
-            });
-            const formData = new FormData(form);
-
-            formData.set('newsletter', document.getElementById('newsletter').checked ? '1' : '0');
-            formData.set('terms', document.getElementById('terms').checked ? '1' : '0');
-
-            try {
-                const response = await fetch(form.getAttribute('action'), {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken(),
-                        'Accept': 'application/json'
-                    },
-                    body: formData
-                });
-
-                console.log('Resposta recebida:', response);
-
-                if (!response.ok) {
-                    const data = await response.json().catch(() => ({}));
-                    console.log('Erro na resposta:', data);
-                    const msg = data.message || 'Erro ao enviar o formulário.';
-                    if (data.errors) {
-                        const firstError = Object.values(data.errors)[0][0];
-                        alert(firstError);
-                    } else {
-                        alert(msg);
-                    }
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    return;
-                }
-
-                // sucesso!
-                const result = await response.json();
-                console.log('ONG cadastrada:', result);
-                showModal();
-
-            } catch (err) {
-                alert('Erro inesperado ao enviar os dados.');
-                console.error(err);
-            } finally {
+            // Show modal after delay
+            setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }
+                showModal();
+            }, 2000);
         });
 
-
         // Modal functions
-        let redirected = false;
-
         function showModal() {
             const modal = document.getElementById('success-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            modal.classList.add('show');
             document.body.style.overflow = 'hidden';
-
-            setTimeout(() => {
-                if (!redirected) {
-                    redirected = true;
-                    window.location.href = '/ongs';
-                }
-            }, 4000);
         }
 
         function closeModal() {
-            if (!redirected) {
-                redirected = true;
-                document.body.style.overflow = 'auto';
-                window.location.href = '/ongs';
-            }
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
         }
+
+        // Close modal on outside click
+        document.getElementById('success-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
         // Password field event listeners
         document.getElementById('password').addEventListener('input', function () {
