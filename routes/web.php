@@ -6,6 +6,7 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OngController;
 
 Route::middleware(['auth'])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
@@ -43,5 +44,6 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::resource('ajudas', AjudaController::class);
 Route::resource('causas', CausaController::class);
+Route::post('/ongs', [OngController::class, 'store'])->name('ongs.store');
 
 require __DIR__ . '/auth.php';
