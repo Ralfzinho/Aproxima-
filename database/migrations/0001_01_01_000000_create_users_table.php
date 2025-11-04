@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use function Laravel\Prompts\table;
 
 return new class extends Migration
 {
@@ -17,14 +18,22 @@ return new class extends Migration
             $table->string('email', 150)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            /*$table->string(column: 'dta_nascimento');*/
-
+            $table->date(column: 'dta_nascimento');
+            
             $table->string('telefone', 30)->nullable();
             $table->char('estado', 2)->nullable();
             $table->string('cidade', 100)->nullable();
 
             $table->enum('tipo', ['voluntario', 'doador', 'representante', 'admin'])
                   ->default('voluntario');
+
+            $table->string('profissao', 120)->nullable();
+            $table->text('habilidades')->nullable();
+
+            $table->enum('disponibilidade',['finais_semana','dias_semanas','noites','manhas','flexivel'])->nullable();
+            $table->enum('experiencia',['nunca','pouca','moderada','bastante'])->nullable();
+            $table->enum('tempo_semana',['h1_2','h3_5','h6_10','h10_plus'])->nullable();
+            
 
             $table->rememberToken();
             $table->timestamps();

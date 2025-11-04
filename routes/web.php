@@ -1,17 +1,38 @@
 <?php
 
 use App\Http\Controllers\AjudaController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CausaController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Models\Causa;
+use Illuminate\Support\Facades\Validator;
 
 Route::middleware(['auth'])->group(function () {
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::view('/inicio', 'index')->name('inicio')->middleware('verified');
     Route::view('/admin', 'admin.index')->name('admin.index');
 });
+
+// GET do formulário
+Route::get('/cadastro_voluntario', function () {
+    $causas = Causa::orderBy('nome')->get();
+    return view('cadastro_voluntario', compact('causas'));
+})->name('cadastro_voluntario');
+
+// POST do formulário
+Route::post('/cadastro_voluntario', function (Request $request) {
+    $validated = User::validateVoluntario($request->all());
+    $user      = User::createVoluntario($validated);
+
+    Auth::login($user);
+
+    // redireciona para a tela de início (home '/')
+    return redirect()->route('inicio');
+})->name('cadastro_voluntario.store');
 
 
 Route::view('/', 'welcome')->name('home');
@@ -19,27 +40,16 @@ Route::view('/como-funciona', 'comofunciona')->name('como-funciona');
 Route::view('/ongs', 'ongs')->name('ongs');
 Route::view('/infocausas', 'infocausas')->name('causas');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
-Route::view('/cadastro_voluntario', 'cadastro_voluntario')->name('cadastro_voluntario');
 Route::view('/cadastro_ong', 'cadastro_ong')->name('cadastro_ong');
 Route::view('/admin', 'admin.index')->name('admin');
 
-
-Route::middleware(['auth'])->group(function () {
-    // Outras rotas protegidas...
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
-
     Route::get('settings/profile', Profile::class)->name('settings.profile');
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
-    Route::get('/causas', [CausaController::class, 'index'])->name('causas.index');
-    Route::get('/ajudas', [AjudaController::class, 'index'])->name('ajudas.index');
-    
+
+
 });
 Route::resource('ajudas', AjudaController::class);
 Route::resource('causas', CausaController::class);

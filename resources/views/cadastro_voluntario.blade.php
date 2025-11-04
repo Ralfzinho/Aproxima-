@@ -56,401 +56,342 @@
                     </div>
                 </div>
 
-                <form id="registration-form">
-                    <!-- Step 1: Personal Information -->
-                    <div class="form-step active" id="step-1">
-                        <div class="text-center mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Informações Pessoais</h2>
-                            <p class="text-gray-600">Conte-nos um pouco sobre você</p>
+                <form id="registration-form" method="POST" action="{{ route('cadastro_voluntario.store') }}">
+                    @csrf
+
+                    {{-- Erros do Backend --}}
+                    @if ($errors->any())
+                        <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800">
+                            <ul class="list-disc ml-5">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                        <!-- Step 1: Personal Information -->
+                        <div class="form-step active" id="step-1">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Informações Pessoais</h2>
+                                <p class="text-gray-600">Conte-nos um pouco sobre você</p>
+                            </div>
+
+                            <div class="max-w-2xl mx-auto space-y-6">
+                                <div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo
+                                            *</label>
+                                        <input type="text" id="name" name="name" value="{{ old('name') }}"
+                                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
+                                    <input type="email" id="email" name="email"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="telefone"
+                                            class="block text-sm font-medium text-gray-700 mb-2">Telefone *</label>
+                                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999"
+                                            value="{{ old('telefone') }}"
+                                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Data de Nascimento
+                                            *</label>
+                                        <input type="date" id="dta_nascimento" name="dta_nascimento"
+                                            value="{{ old('dta_nascimento') }}"
+                                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Estado *</label>
+                                        <select id="estado" name="estado"
+                                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            required>
+                                            <option value="">Selecione seu estado</option>
+                                            @php $UFs = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']; @endphp
+                                            @foreach($UFs as $uf) <option value="{{ $uf }}"
+                                            @selected(old('estado') === $uf)>{{ $uf }}</option> @endforeach
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Cidade *</label>
+                                        <input type="text" id="cidade" name="cidade" value="{{ old('cidade') }}"
+                                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end mt-12 max-w-2xl mx-auto">
+                                <button type="button" id="next-step-1"
+                                    class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                                    Continuar
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="max-w-2xl mx-auto space-y-6">
-                            <div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo *</label>
-                                    <input type="text" id="firstName" name="firstName"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
+                        <!-- Step 2: Interests -->
+                        <div class="form-step" id="step-2">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Suas Causas de Interesse</h2>
+                                <p class="text-gray-600">Selecione as causas que mais te motivam a fazer voluntariado
+                                </p>
+                            </div>
+
+                            <div class="max-w-4xl mx-auto">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                                    @forelse($causas as $causa)
+                                        <label
+                                            class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                            <input type="checkbox" name="causas[]" value="{{ $causa->id }}"
+                                                class="mr-3 text-blue-600" @checked(collect(old('causas', []))->contains($causa->id))>
+                                            <span class="font-medium">{{ $causa->nome }}</span>
+                                        </label>
+                                    @empty
+                                        <p class="text-gray-600">Nenhuma causa cadastrada no momento.</p>
+                                    @endforelse
+                                </div>
+
+                                <div class="space-y-6">
+                                    <div>
+                                        <label for="disponibilidade"
+                                            class="block text-sm font-medium text-gray-700 mb-2">Disponibilidade
+                                            *</label>
+                                        <select id="disponibilidade" name="disponibilidade"
+                                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            required>
+                                            <option value="">Selecione sua disponibilidade</option>
+                                            <option value="finais_semana"
+                                                @selected(old('disponibilidade') === 'finais_semana')>Finais de semana
+                                            </option>
+                                            <option value="dias_semana"
+                                                @selected(old('disponibilidade') === 'dias_semana')>Dias de semana
+                                            </option>
+                                            <option value="noites" @selected(old('disponibilidade') === 'noites')>Noites
+                                            </option>
+                                            <option value="manhas" @selected(old('disponibilidade') === 'manhas')>Manhãs
+                                            </option>
+                                            <option value="flexivel" @selected(old('disponibilidade') === 'flexivel')>
+                                                Horário flexível</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">E-mail *</label>
-                                <input type="email" id="email" name="email"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
+                            <div class="flex justify-between mt-12 max-w-2xl mx-auto">
+                                <button type="button" id="prev-step-2"
+                                    class="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
+                                    Voltar
+                                </button>
+                                <button type="button" id="next-step-2"
+                                    class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                                    Continuar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Skills and Experience -->
+                        <div class="form-step" id="step-3">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Suas Habilidades</h2>
+                                <p class="text-gray-600">Conte-nos sobre suas experiências e competências</p>
                             </div>
 
-                            <div class="grid md:grid-cols-2 gap-6">
+                            <div class="max-w-2xl mx-auto space-y-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Telefone *</label>
-                                    <input type="tel" id="phone" name="phone" placeholder="(11) 99999-9999"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Profissão/Área de
+                                        Atuação</label>
+                                    <input type="text" id="profissao" name="profissao" value="{{ old('profissao') }}"
+                                        placeholder="Ex: Professor, Engenheiro, Estudante..."
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Data de Nascimento
-                                        *</label>
-                                    <input type="date" id="birthDate" name="birthDate"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
-                                </div>
-                            </div>
 
-                            <div class="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Estado *</label>
-                                    <select id="state" name="state"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
-                                        <option value="">Selecione seu estado</option>
-                                        <option value="AC">Acre</option>
-                                        <option value="AL">Alagoas</option>
-                                        <option value="AP">Amapá</option>
-                                        <option value="AM">Amazonas</option>
-                                        <option value="BA">Bahia</option>
-                                        <option value="CE">Ceará</option>
-                                        <option value="DF">Distrito Federal</option>
-                                        <option value="ES">Espírito Santo</option>
-                                        <option value="GO">Goiás</option>
-                                        <option value="MA">Maranhão</option>
-                                        <option value="MT">Mato Grosso</option>
-                                        <option value="MS">Mato Grosso do Sul</option>
-                                        <option value="MG">Minas Gerais</option>
-                                        <option value="PA">Pará</option>
-                                        <option value="PB">Paraíba</option>
-                                        <option value="PR">Paraná</option>
-                                        <option value="PE">Pernambuco</option>
-                                        <option value="PI">Piauí</option>
-                                        <option value="RJ">Rio de Janeiro</option>
-                                        <option value="RN">Rio Grande do Norte</option>
-                                        <option value="RS">Rio Grande do Sul</option>
-                                        <option value="RO">Rondônia</option>
-                                        <option value="RR">Roraima</option>
-                                        <option value="SC">Santa Catarina</option>
-                                        <option value="SP">São Paulo</option>
-                                        <option value="SE">Sergipe</option>
-                                        <option value="TO">Tocantins</option>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Habilidades e
+                                        Competências</label>
+                                    <textarea id="habilidades" name="habilidades" rows="4"
+                                        placeholder="Descreva suas principais habilidades, conhecimentos técnicos, idiomas, etc."
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
+                                </div>
+
+                                <div>
+                                    <label for="experiencia"
+                                        class="block text-sm font-medium text-gray-700 mb-2">Experiência em
+                                        Voluntariado</label>
+                                    <select id="experiencia" name="experiencia"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        <option value="">Selecione sua experiência</option>
+                                        <option value="nunca" @selected(old('experiencia') === 'nunca')>Nunca fiz trabalho
+                                            voluntário</option>
+                                        <option value="pouca" @selected(old('experiencia') === 'pouca')>Pouca experiência
+                                            (menos de 1 ano)</option>
+                                        <option value="moderada" @selected(old('experiencia') === 'moderada')>Experiência
+                                            moderada (1-3 anos)</option>
+                                        <option value="bastante" @selected(old('experiencia') === 'bastante')>Bastante
+                                            experiência (mais de 3 anos)</option>
                                     </select>
                                 </div>
+
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Cidade *</label>
-                                    <input type="text" id="city" name="city"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Motivação para ser
+                                        Voluntário</label>
+                                    <textarea id="motivation" name="motivation" rows="3"
+                                        placeholder="O que te motiva a fazer trabalho voluntário?"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="flex justify-end mt-12 max-w-2xl mx-auto">
-                            <button type="button" id="next-step-1"
-                                class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                                Continuar
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Interests -->
-                    <div class="form-step" id="step-2">
-                        <div class="text-center mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Suas Causas de Interesse</h2>
-                            <p class="text-gray-600">Selecione as causas que mais te motivam a fazer voluntariado</p>
-                        </div>
-
-                        <div class="max-w-4xl mx-auto">
-                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                                <label
-                                    class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="interests" value="meio-ambiente"
-                                        class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-green-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.66c.03-.08.06-.17.09-.25.16-.42.25-.88.25-1.36V18l.24-.14c2.79-1.64 5.91-1.97 9.09-.84 1.66.59 3.13 1.48 4.37 2.64.19-.78.3-1.6.3-2.44V8zm-2-4H9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Meio Ambiente</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="interests" value="educacao" class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-blue-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Educação</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="interests" value="saude" class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-pink-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Saúde</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="interests" value="animais" class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-yellow-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-yellow-600" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Proteção Animal</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="interests" value="direitos-humanos"
-                                        class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-purple-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-purple-600" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Direitos Humanos</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="interests" value="cultura" class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-red-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Arte e Cultura</span>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div class="space-y-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Disponibilidade
-                                        *</label>
-                                    <select id="availability" name="availability"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
-                                        <option value="">Selecione sua disponibilidade</option>
-                                        <option value="weekends">Finais de semana</option>
-                                        <option value="weekdays">Dias de semana</option>
-                                        <option value="evenings">Noites</option>
-                                        <option value="mornings">Manhãs</option>
-                                        <option value="flexible">Horário flexível</option>
+                                    <label for="tempo_semana" class="block text-sm font-medium text-gray-700 mb-2">Tempo
+                                        Disponível por Semana</label>
+                                    <select id="tempo_semana" name="tempo_semana"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        <option value="">Selecione o tempo disponível</option>
+                                        <option value="h1_2" @selected(old('tempo_semana') === 'h1_2')>1-2 horas por
+                                            semana</option>
+                                        <option value="h3_5" @selected(old('tempo_semana') === 'h3_5')>3-5 horas por
+                                            semana</option>
+                                        <option value="h6_10" @selected(old('tempo_semana') === 'h6_10')>6-10 horas por
+                                            semana</option>
+                                        <option value="h10_plus" @selected(old('tempo_semana') === 'h10_plus')>Mais de 10
+                                            horas por semana</option>
                                     </select>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="flex justify-between mt-12 max-w-2xl mx-auto">
-                            <button type="button" id="prev-step-2"
-                                class="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
-                                Voltar
-                            </button>
-                            <button type="button" id="next-step-2"
-                                class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                                Continuar
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Skills and Experience -->
-                    <div class="form-step" id="step-3">
-                        <div class="text-center mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Suas Habilidades</h2>
-                            <p class="text-gray-600">Conte-nos sobre suas experiências e competências</p>
-                        </div>
-
-                        <div class="max-w-2xl mx-auto space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Profissão/Área de
-                                    Atuação</label>
-                                <input type="text" id="profession" name="profession"
-                                    placeholder="Ex: Professor, Engenheiro, Estudante..."
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Habilidades e
-                                    Competências</label>
-                                <textarea id="skills" name="skills" rows="4"
-                                    placeholder="Descreva suas principais habilidades, conhecimentos técnicos, idiomas, etc."
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Experiência em
-                                    Voluntariado</label>
-                                <select id="volunteerExperience" name="volunteerExperience"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                                    <option value="">Selecione sua experiência</option>
-                                    <option value="none">Nunca fiz trabalho voluntário</option>
-                                    <option value="beginner">Pouca experiência (menos de 1 ano)</option>
-                                    <option value="intermediate">Experiência moderada (1-3 anos)</option>
-                                    <option value="experienced">Bastante experiência (mais de 3 anos)</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Motivação para ser
-                                    Voluntário</label>
-                                <textarea id="motivation" name="motivation" rows="3"
-                                    placeholder="O que te motiva a fazer trabalho voluntário?"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Tempo Disponível por
-                                    Semana</label>
-                                <select id="timeCommitment" name="timeCommitment"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                                    <option value="">Selecione o tempo disponível</option>
-                                    <option value="1-2">1-2 horas por semana</option>
-                                    <option value="3-5">3-5 horas por semana</option>
-                                    <option value="6-10">6-10 horas por semana</option>
-                                    <option value="10+">Mais de 10 horas por semana</option>
-                                </select>
+                            <div class="flex justify-between mt-12 max-w-2xl mx-auto">
+                                <button type="button" id="prev-step-3"
+                                    class="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
+                                    Voltar
+                                </button>
+                                <button type="button" id="next-step-3"
+                                    class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                                    Continuar
+                                </button>
                             </div>
                         </div>
 
-                        <div class="flex justify-between mt-12 max-w-2xl mx-auto">
-                            <button type="button" id="prev-step-3"
-                                class="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
-                                Voltar
-                            </button>
-                            <button type="button" id="next-step-3"
-                                class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                                Continuar
-                            </button>
+                        <!-- Step 4: Password -->
+                        <div class="form-step" id="step-4">
+                            <div class="text-center mb-8">
+                                <h2 class="text-2xl font-bold text-gray-900 mb-4">Finalize seu Cadastro</h2>
+                                <p class="text-gray-600">Crie uma senha segura para sua conta</p>
+                            </div>
+
+                            <div class="max-w-md mx-auto space-y-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Senha *</label>
+                                    <input type="password" id="password" name="password"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Confirmar Senha
+                                        *</label>
+                                    <input type="password" id="password_confirmation" name="password_confirmation"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
+                                </div>
+
+                                <!-- Password Requirements -->
+                                <div class="text-sm text-gray-600">
+                                    <p class="mb-2 font-medium">Sua senha deve conter:</p>
+                                    <ul class="space-y-1" id="password-requirements">
+                                        <li class="flex items-center" id="req-length">
+                                            <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <span>Pelo menos 8 caracteres</span>
+                                        </li>
+                                        <li class="flex items-center" id="req-uppercase">
+                                            <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <span>Uma letra maiúscula</span>
+                                        </li>
+                                        <li class="flex items-center" id="req-lowercase">
+                                            <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <span>Uma letra minúscula</span>
+                                        </li>
+                                        <li class="flex items-center" id="req-number">
+                                            <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <span>Um número</span>
+                                        </li>
+                                        <li class="flex items-center" id="req-special">
+                                            <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor"
+                                                viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <span>Um caractere especial (@, #, $, etc.)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Password Match Message -->
+                                <div id="password-match-message" class="text-sm hidden">
+                                    <!-- Password match message will appear here -->
+                                </div>
+
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="terms" name="terms" class="mt-1 mr-3 text-blue-600"
+                                        required>
+                                    <label for="terms" class="text-sm text-gray-600">
+                                        Eu concordo com os <a href="#" class="text-blue-600 hover:underline">Termos de
+                                            Uso</a> e
+                                        <a href="#" class="text-blue-600 hover:underline">Política de Privacidade</a> *
+                                    </label>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="newsletter" name="newsletter"
+                                        class="mt-1 mr-3 text-blue-600">
+                                    <label for="newsletter" class="text-sm text-gray-600">
+                                        Quero receber novidades sobre oportunidades de voluntariado por e-mail
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-12 max-w-md mx-auto">
+                                <button type="button" id="prev-step-4"
+                                    class="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
+                                    Voltar
+                                </button>
+                                <button type="submit" id="submit-form"
+                                    class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                                    Criar Conta
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                    <!-- Step 4: Password -->
-                    <div class="form-step" id="step-4">
-                        <div class="text-center mb-8">
-                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Finalize seu Cadastro</h2>
-                            <p class="text-gray-600">Crie uma senha segura para sua conta</p>
-                        </div>
-
-                        <div class="max-w-md mx-auto space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Senha *</label>
-                                <input type="password" id="password" name="password"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Confirmar Senha *</label>
-                                <input type="password" id="confirmPassword" name="confirmPassword"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
-                            </div>
-
-                            <!-- Password Requirements -->
-                            <div class="text-sm text-gray-600">
-                                <p class="mb-2 font-medium">Sua senha deve conter:</p>
-                                <ul class="space-y-1" id="password-requirements">
-                                    <li class="flex items-center" id="req-length">
-                                        <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <span>Pelo menos 8 caracteres</span>
-                                    </li>
-                                    <li class="flex items-center" id="req-uppercase">
-                                        <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <span>Uma letra maiúscula</span>
-                                    </li>
-                                    <li class="flex items-center" id="req-lowercase">
-                                        <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <span>Uma letra minúscula</span>
-                                    </li>
-                                    <li class="flex items-center" id="req-number">
-                                        <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <span>Um número</span>
-                                    </li>
-                                    <li class="flex items-center" id="req-special">
-                                        <svg class="h-4 w-4 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <span>Um caractere especial (@, #, $, etc.)</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Password Match Message -->
-                            <div id="password-match-message" class="text-sm hidden">
-                                <!-- Password match message will appear here -->
-                            </div>
-
-                            <div class="flex items-start">
-                                <input type="checkbox" id="terms" name="terms" class="mt-1 mr-3 text-blue-600" required>
-                                <label for="terms" class="text-sm text-gray-600">
-                                    Eu concordo com os <a href="#" class="text-blue-600 hover:underline">Termos de
-                                        Uso</a> e
-                                    <a href="#" class="text-blue-600 hover:underline">Política de Privacidade</a> *
-                                </label>
-                            </div>
-
-                            <div class="flex items-start">
-                                <input type="checkbox" id="newsletter" name="newsletter"
-                                    class="mt-1 mr-3 text-blue-600">
-                                <label for="newsletter" class="text-sm text-gray-600">
-                                    Quero receber novidades sobre oportunidades de voluntariado por e-mail
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between mt-12 max-w-md mx-auto">
-                            <button type="button" id="prev-step-4"
-                                class="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-400 transition">
-                                Voltar
-                            </button>
-                            <button type="submit" id="submit-form"
-                                class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-                                Criar Conta
-                            </button>
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -552,18 +493,17 @@
 
         // Validation functions
         function validateStep1() {
-            const requiredFields = ['firstName', 'email', 'phone', 'birthDate', 'state', 'city'];
+            const required = ['name','email','telefone','dta_nascimento','estado','cidade'];
             let isValid = true;
-
-            requiredFields.forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                if (!field.value.trim()) {
-                    field.classList.add('border-red-500');
+            for (const id of required) {
+                const el = document.getElementById(id);
+                if (!el || !el.value || !el.value.trim()) {
+                    el?.classList.add('border-red-500');
                     isValid = false;
-                } else {
-                    field.classList.remove('border-red-500');
+                }   else {
+                    el.classList.remove('border-red-500');
                 }
-            });
+            }
 
             if (!isValid) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
@@ -573,20 +513,20 @@
         }
 
         function validateStep2() {
-            const interests = document.querySelectorAll('input[name="interests"]:checked');
-            const availability = document.getElementById('availability').value;
+            const interests = document.querySelectorAll('input[name="causas[]"]:checked');
+            const disponibilidadeEl = document.getElementById('disponibilidade');
 
             if (interests.length === 0) {
                 alert('Por favor, selecione pelo menos uma causa de interesse.');
                 return false;
             }
 
-            if (!availability) {
+            if (!disponibilidadeEl || !disponibilidadeEl.value) {
                 alert('Por favor, selecione sua disponibilidade.');
-                document.getElementById('availability').classList.add('border-red-500');
+                disponibilidadeEl?.classList.add('border-red-500');
                 return false;
             } else {
-                document.getElementById('availability').classList.remove('border-red-500');
+                disponibilidadeEl.classList.remove('border-red-500');
             }
 
             return true;
@@ -632,7 +572,7 @@
 
         function checkPasswordMatch() {
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+            const confirmPassword = document.getElementById('password_confirmation').value;
             const messageDiv = document.getElementById('password-match-message');
 
             if (confirmPassword.length > 0) {
@@ -655,46 +595,14 @@
 
         // Form submission
         document.getElementById('registration-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const terms = document.getElementById('terms').checked;
+            const confirm = document.getElementById('password_confirmation').value;
+            const termsOk = document.getElementById('terms').checked;
 
-            // Validate password requirements
-            if (!validatePassword(password)) {
-                alert('A senha não atende aos requisitos de segurança. Verifique os critérios destacados.');
-                document.getElementById('password').focus();
-                return;
-            }
-
-            // Check password match
-            if (password !== confirmPassword) {
-                alert('As senhas não coincidem.');
-                document.getElementById('confirmPassword').focus();
-                return;
-            }
-
-            // Check terms agreement
-            if (!terms) {
-                alert('Você deve concordar com os Termos de Uso e Política de Privacidade para continuar.');
-                document.getElementById('terms').focus();
-                return;
-            }
-
-            const submitBtn = document.getElementById('submit-form');
-            const originalText = submitBtn.textContent;
-
-            // Show loading
-            submitBtn.textContent = 'Criando conta...';
-            submitBtn.disabled = true;
-
-            // Show modal after delay
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                showModal();
-            }, 2000);
+            if (!validatePassword(password)) { e.preventDefault(); alert('A senha não atende aos requisitos.'); return; }
+            if (password !== confirm) { e.preventDefault(); alert('As senhas não coincidem.'); return; }
+            if (!termsOk) { e.preventDefault(); alert('Aceite os termos para continuar.'); return; }
+            // se chegou aqui, deixa enviar pro backend
         });
 
         // Modal functions
@@ -724,13 +632,13 @@
             validatePassword(password);
 
             // Also check password match if confirm password has value
-            const confirmPassword = document.getElementById('confirmPassword').value;
+            const confirmPassword = document.getElementById('password_confirmation').value;
             if (confirmPassword.length > 0) {
                 checkPasswordMatch();
             }
         });
 
-        document.getElementById('confirmPassword').addEventListener('input', function () {
+        document.getElementById('password_confirmation').addEventListener('input', function () {
             checkPasswordMatch();
         });
 

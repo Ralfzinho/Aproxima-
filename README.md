@@ -44,7 +44,7 @@ O sistema possui as principais entidades:
 ### Tabela `ajudas`
 
 ```sql
-INSERT INTO Ajuda (nome, descricao)
+INSERT INTO Ajudas (nome, descricao)
 VALUES
 ('Voluntariado', 'Apoio presencial ou remoto em atividades das ONGs'),
 ('Doação Financeira', 'Contribuição monetária para apoio a projetos sociais'),
@@ -73,7 +73,7 @@ VALUES
 ### Tabela `causas`
 
 ```sql
-INSERT INTO Causa (nome, descricao)
+INSERT INTO Causas (nome, descricao)
 VALUES
 ('Educação', 'Projetos que promovem acesso à educação de qualidade'),
 ('Saúde', 'Iniciativas voltadas à saúde física e mental'),
