@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Hash;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -81,7 +82,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function causas()
+    public function causas(): BelongsToMany
     {
         return $this->belongsToMany(Causa::class, 'interesse_usuario', 'user_id', 'causa_id')->withTimestamps();
     }

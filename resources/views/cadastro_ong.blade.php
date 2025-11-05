@@ -58,7 +58,7 @@
                 </div>
 
 
-                <form id="registration-form" action="/ongs" method="POST" enctype="multipart/form-data">
+                <form id="registration-form" method="POST" action="{{ route('cadastro_ong.store') }}">
                     @csrf
                     <!-- Step 1: Organization Information -->
                     <div class="form-step active" id="step-1">
@@ -70,7 +70,7 @@
                         <div class="max-w-2xl mx-auto space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Nome da ONG *</label>
-                                <input type="text" id="orgName" name="orgName"
+                                <input type="text" id="org_name" name="org_name"
                                     class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                     required>
                             </div>
@@ -84,7 +84,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Ano de Fundação</label>
-                                    <input type="number" id="foundingYear" name="foundingYear" min="1900" max="2024"
+                                    <input type="number" id="founding_year" name="founding_year" min="1900" max="2024"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                 </div>
                             </div>
@@ -187,94 +187,16 @@
 
                         <div class="max-w-4xl mx-auto">
                             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                                <label
-                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="meio-ambiente"
-                                        class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-green-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.66c.03-.08.06-.17.09-.25.16-.42.25-.88.25-1.36V18l.24-.14c2.79-1.64 5.91-1.97 9.09-.84 1.66.59 3.13 1.48 4.37 2.64.19-.78.3-1.6.3-2.44V8zm-2-4H9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Meio Ambiente</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="educacao" class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-blue-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Educação</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="saude" class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-pink-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Saúde</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="animais" class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-yellow-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-yellow-600" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Proteção Animal</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="direitos-humanos"
-                                        class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-purple-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-purple-600" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Direitos Humanos</span>
-                                    </div>
-                                </label>
-
-                                <label
-                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="areas[]" value="assistencia-social"
-                                        class="mr-3 text-blue-600">
-                                    <div class="flex items-center">
-                                        <div class="bg-orange-100 rounded-full p-2 mr-3">
-                                            <svg class="h-5 w-5 text-orange-600" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.5 7.5h-3A1.5 1.5 0 0 0 14.04 8.37L11.5 16H14v6h6zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm2 16v-6H10l-2.54-7.63A1.5 1.5 0 0 0 6 7.5H3A1.5 1.5 0 0 0 1.54 8.37L-1 16h2.5v6h6z" />
-                                            </svg>
-                                        </div>
-                                        <span class="font-medium">Assistência Social</span>
-                                    </div>
-                                </label>
+                                @forelse($causas as $causa)
+                                    <label
+                                        class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" name="causas[]" value="{{ $causa->id }}"
+                                            class="mr-3 text-blue-600" @checked(collect(old('causas', []))->contains($causa->id))>
+                                        <span class="font-medium">{{ $causa->nome }}</span>
+                                    </label>
+                                @empty
+                                    <p class="text-gray-600">Nenhuma causa cadastrada no momento.</p>
+                                @endforelse
                             </div>
 
                             <div class="space-y-6">
@@ -328,22 +250,22 @@
                                     Procurados *</label>
                                 <div class="space-y-2">
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="presencial"
+                                        <input type="checkbox" name="volunteer_types[]" value="presencial"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários presenciais</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="remoto"
+                                        <input type="checkbox" name="volunteer_types[]" value="remoto"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários remotos</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="especializado"
+                                        <input type="checkbox" name="volunteer_types[]" value="especializado"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários especializados (profissionais)</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteerTypes[]" value="pontual"
+                                        <input type="checkbox" name="volunteer_types[]" value="pontual"
                                             class="mr-3 text-blue-600">
                                         <span>Voluntários para ações pontuais</span>
                                     </label>
@@ -353,14 +275,14 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Habilidades
                                     Desejadas</label>
-                                <textarea id="desiredSkills" name="desiredSkills" rows="3"
+                                <textarea id="desired_skills" name="desired_skills" rows="3"
                                     placeholder="Ex: Marketing digital, contabilidade, ensino, cuidados médicos, etc."
                                     class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Projetos Atuais *</label>
-                                <textarea id="currentProjects" name="currentProjects" rows="4"
+                                <textarea id="current_projects" name="current_projects" rows="4"
                                     placeholder="Descreva os principais projetos em andamento que precisam de voluntários..."
                                     class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
                                     required></textarea>
@@ -382,7 +304,7 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Número de Voluntários
                                         Ativos</label>
-                                    <select id="activeVolunteers" name="activeVolunteers"
+                                    <select id="active_volunteers" name="active_volunteers"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
                                         <option value="0-5">0 a 5 voluntários</option>
@@ -398,10 +320,10 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Pessoa Responsável pelo
                                     Contato *</label>
                                 <div class="grid md:grid-cols-2 gap-4">
-                                    <input type="text" id="contactName" name="contactName" placeholder="Nome completo"
+                                    <input type="text" id="contact_name" name="contact_name" placeholder="Nome completo"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         required>
-                                    <input type="text" id="contactRole" name="contactRole" placeholder="Cargo/Função"
+                                    <input type="text" id="contact_role" name="contact_role" placeholder="Cargo/Função"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         required>
                                 </div>
@@ -437,7 +359,7 @@
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Confirmar Senha *</label>
-                                <input type="password" id="confirmPassword" name="confirmPassword"
+                                <input type="password" id="password_confirmation" name="password_confirmation"
                                     class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                     required>
                             </div>
@@ -619,7 +541,7 @@
 
         // Validation functions
         function validateStep1() {
-            const requiredFields = ['orgName', 'cnpj', 'email', 'phone', 'address', 'state', 'city'];
+            const requiredFields = ['org_name', 'cnpj', 'email', 'phone', 'address', 'state', 'city'];
             let isValid = true;
 
             requiredFields.forEach(fieldId => {
@@ -640,7 +562,7 @@
         }
 
         function validateStep2() {
-            const areas = document.querySelectorAll('input[name="areas[]"]:checked');
+            const areas = document.querySelectorAll('input[name="causas[]"]:checked');
             const mission = document.getElementById('mission').value;
 
             if (areas.length === 0) {
@@ -660,32 +582,32 @@
         }
 
         function validateStep3() {
-            const volunteerTypes = document.querySelectorAll('input[name="volunteerTypes[]"]:checked');
-            const currentProjects = document.getElementById('currentProjects').value;
-            const contactName = document.getElementById('contactName').value;
-            const contactRole = document.getElementById('contactRole').value;
+            const volunteerTypes = document.querySelectorAll('input[name="volunteer_types[]"]:checked');
+            const current_projects = document.getElementById('current_projects').value;
+            const contact_name = document.getElementById('contact_name').value;
+            const contact_role = document.getElementById('contact_role').value;
 
             if (volunteerTypes.length === 0) {
                 alert('Por favor, selecione pelo menos um tipo de voluntário procurado.');
                 return false;
             }
 
-            if (!currentProjects.trim()) {
+            if (!current_projects.trim()) {
                 alert('Por favor, descreva os projetos atuais.');
-                document.getElementById('currentProjects').classList.add('border-red-500');
+                document.getElementById('current_projects').classList.add('border-red-500');
                 return false;
             } else {
-                document.getElementById('currentProjects').classList.remove('border-red-500');
+                document.getElementById('current_projects').classList.remove('border-red-500');
             }
 
-            if (!contactName.trim() || !contactRole.trim()) {
+            if (!contact_name.trim() || !contact_role.trim()) {
                 alert('Por favor, preencha as informações da pessoa responsável pelo contato.');
-                if (!contactName.trim()) document.getElementById('contactName').classList.add('border-red-500');
-                if (!contactRole.trim()) document.getElementById('contactRole').classList.add('border-red-500');
+                if (!contact_name.trim()) document.getElementById('contact_name').classList.add('border-red-500');
+                if (!contact_role.trim()) document.getElementById('contact_role').classList.add('border-red-500');
                 return false;
             } else {
-                document.getElementById('contactName').classList.remove('border-red-500');
-                document.getElementById('contactRole').classList.remove('border-red-500');
+                document.getElementById('contact_name').classList.remove('border-red-500');
+                document.getElementById('contact_role').classList.remove('border-red-500');
             }
 
             return true;
@@ -731,104 +653,26 @@
 
         function checkPasswordMatch() {
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+            const password_confirmation = document.getElementById('password_confirmation').value;
             const messageDiv = document.getElementById('password-match-message');
 
-            if (confirmPassword.length > 0) {
-                if (password === confirmPassword) {
+            if (password_confirmation.length > 0) {
+                if (password === password_confirmation) {
                     messageDiv.innerHTML = '<p class="text-green-600 flex items-center"><svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>As senhas coincidem</p>';
                     messageDiv.classList.remove('hidden');
-                    document.getElementById('confirmPassword').classList.remove('border-red-500');
-                    document.getElementById('confirmPassword').classList.add('border-green-500');
+                    document.getElementById('password_confirmation').classList.remove('border-red-500');
+                    document.getElementById('password_confirmation').classList.add('border-green-500');
                 } else {
                     messageDiv.innerHTML = '<p class="text-red-600 flex items-center"><svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>As senhas não coincidem</p>';
                     messageDiv.classList.remove('hidden');
-                    document.getElementById('confirmPassword').classList.add('border-red-500');
-                    document.getElementById('confirmPassword').classList.remove('border-green-500');
+                    document.getElementById('password_confirmation').classList.add('border-red-500');
+                    document.getElementById('password_confirmation').classList.remove('border-green-500');
                 }
             } else {
                 messageDiv.classList.add('hidden');
-                document.getElementById('confirmPassword').classList.remove('border-red-500', 'border-green-500');
+                document.getElementById('password_confirmation').classList.remove('border-red-500', 'border-green-500');
             }
         }
-
-        // Form submission
-        function csrfToken() {
-            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        }
-
-        document.getElementById('registration-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            console.log('Formulário enviado via JS');
-
-            const submitBtn = document.getElementById('submit-form');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Criando conta...';
-            submitBtn.disabled = true;
-
-            const form = e.target;
-
-            // Limpa valores de inputs invisíveis e com tipo "url" ou inválidos
-            form.querySelectorAll('input').forEach(input => {
-                const isHidden = input.offsetParent === null;
-                const isInvalid = !input.validity.valid;
-                if (isHidden && isInvalid) {
-                    input.value = ''; // limpa o campo
-                }
-            });
-
-            // Corrige campos required invisíveis
-            form.querySelectorAll('[required]').forEach(el => {
-                if (el.offsetParent === null) {
-                    el.removeAttribute('required');
-                }
-            });
-            const formData = new FormData(form);
-
-            formData.set('newsletter', document.getElementById('newsletter').checked ? '1' : '0');
-            formData.set('terms', document.getElementById('terms').checked ? '1' : '0');
-
-            try {
-                const response = await fetch(form.getAttribute('action'), {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken(),
-                        'Accept': 'application/json'
-                    },
-                    body: formData
-                });
-
-                console.log('Resposta recebida:', response);
-
-                if (!response.ok) {
-                    const data = await response.json().catch(() => ({}));
-                    console.log('Erro na resposta:', data);
-                    const msg = data.message || 'Erro ao enviar o formulário.';
-                    if (data.errors) {
-                        const firstError = Object.values(data.errors)[0][0];
-                        alert(firstError);
-                    } else {
-                        alert(msg);
-                    }
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    return;
-                }
-
-                // sucesso!
-                const result = await response.json();
-                console.log('ONG cadastrada:', result);
-                showModal();
-
-            } catch (err) {
-                alert('Erro inesperado ao enviar os dados.');
-                console.error(err);
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-
 
         // Modal functions
         let redirected = false;
@@ -861,13 +705,13 @@
             validatePassword(password);
 
             // Also check password match if confirm password has value
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            if (confirmPassword.length > 0) {
+            const password_confirmation = document.getElementById('password_confirmation').value;
+            if (password_confirmation.length > 0) {
                 checkPasswordMatch();
             }
         });
 
-        document.getElementById('confirmPassword').addEventListener('input', function () {
+        document.getElementById('password_confirmation').addEventListener('input', function () {
             checkPasswordMatch();
         });
 

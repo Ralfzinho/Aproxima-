@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AjudaController;
+use App\Models\Ong;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CausaController;
@@ -35,13 +36,27 @@ Route::post('/cadastro_voluntario', function (Request $request) {
     return redirect()->route('inicio');
 })->name('cadastro_voluntario.store');
 
+// GET do formulário
+Route::get('/cadastro_ong', function () {
+    $causas = Causa::orderBy('nome')->get();
+    return view('cadastro_ong', compact('causas'));
+})->name('cadastro_ong');
+
+// POST do formulário 
+Route::post('/cadastro_ong', function (Request $request) {
+    $validated = Ong::validateCadastro($request->all());
+    $ong     = Ong::createCadastro($validated);
+
+    // se não há autenticação de ONG, só redireciona com flash
+    return redirect()->route('inicio')->with('success', 'ONG cadastrada com sucesso!');
+})->name('cadastro_ong.store');
+
 
 Route::view('/', 'welcome')->name('home');
 Route::view('/como-funciona', 'comofunciona')->name('como-funciona');
 Route::view('/ongs', 'ongs')->name('ongs');
 Route::view('/infocausas', 'infocausas')->name('causas');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
-Route::view('/cadastro_ong', 'cadastro_ong')->name('cadastro_ong');
 Route::view('/admin', 'admin.index')->name('admin');
 
 Route::middleware(['auth'])->group(function () {
