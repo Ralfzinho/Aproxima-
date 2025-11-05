@@ -73,7 +73,7 @@ VALUES
 ### Tabela `causas`
 
 ```sql
-INSERT INTO Causa (nome, descricao)
+INSERT INTO Causas (nome, descricao)
 VALUES
 ('Educação', 'Projetos que promovem acesso à educação de qualidade'),
 ('Saúde', 'Iniciativas voltadas à saúde física e mental'),
