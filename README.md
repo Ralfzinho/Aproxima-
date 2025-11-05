@@ -44,7 +44,7 @@ O sistema possui as principais entidades:
 ### Tabela `ajudas`
 
 ```sql
-INSERT INTO Ajuda (nome, descricao)
+INSERT INTO Ajudas (nome, descricao)
 VALUES
 ('Voluntariado', 'Apoio presencial ou remoto em atividades das ONGs'),
 ('Doação Financeira', 'Contribuição monetária para apoio a projetos sociais'),
@@ -104,8 +104,8 @@ VALUES
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/doafacil.git
-cd doafacil
+git clone https://github.com/Ralfzinho/Aproxima-
+cd aproxima
 ```
 
 ### 2. Instalar Dependências
