@@ -71,21 +71,31 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Nome da ONG *</label>
                                 <input type="text" id="org_name" name="org_name"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
+                                    class="w-full px-3 py-3 border @error('org_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    value="{{ old('org_name') }}" required>
+                                @error('org_name')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">CNPJ *</label>
                                     <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
+                                        class="w-full px-3 py-3 border @error('cnpj') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        value="{{ old('cnpj') }}" required>
+                                    @error('cnpj')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Ano de Fundação</label>
                                     <input type="number" id="founding_year" name="founding_year" min="1900" max="2024"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border @error('founding_year') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        value="{{ old('founding_year') }}">
+                                    @error('founding_year')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -93,79 +103,102 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">E-mail Institucional
                                     *</label>
                                 <input type="email" id="email" name="email"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
+                                    class="w-full px-3 py-3 border @error('email') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    value="{{ old('email') }}" required>
+                                @error('email')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Telefone *</label>
                                     <input type="tel" id="phone" name="phone" placeholder="(11) 3333-3333"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
+                                        class="w-full px-3 py-3 border @error('phone') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        value="{{ old('phone') }}" required>
+                                    @error('phone')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Site/Redes
                                         Sociais</label>
                                     <input type="text" id="website" name="website"
                                         placeholder="https://www.suaong.org.br"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border @error('website') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        value="{{ old('website') }}">
+                                    @error('website')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Endereço Completo *</label>
                                 <input type="text" id="address" name="address" placeholder="Rua, número, bairro"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
+                                    class="w-full px-3 py-3 border @error('address') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    value="{{ old('address') }}" required>
+                                @error('address')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="grid md:grid-cols-3 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Estado *</label>
                                     <select id="state" name="state"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        class="w-full px-3 py-3 border @error('state') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         required>
                                         <option value="">Selecione seu estado</option>
-                                        <option value="AC">Acre</option>
-                                        <option value="AL">Alagoas</option>
-                                        <option value="AP">Amapá</option>
-                                        <option value="AM">Amazonas</option>
-                                        <option value="BA">Bahia</option>
-                                        <option value="CE">Ceará</option>
-                                        <option value="DF">Distrito Federal</option>
-                                        <option value="ES">Espírito Santo</option>
-                                        <option value="GO">Goiás</option>
-                                        <option value="MA">Maranhão</option>
-                                        <option value="MT">Mato Grosso</option>
-                                        <option value="MS">Mato Grosso do Sul</option>
-                                        <option value="MG">Minas Gerais</option>
-                                        <option value="PA">Pará</option>
-                                        <option value="PB">Paraíba</option>
-                                        <option value="PR">Paraná</option>
-                                        <option value="PE">Pernambuco</option>
-                                        <option value="PI">Piauí</option>
-                                        <option value="RJ">Rio de Janeiro</option>
-                                        <option value="RN">Rio Grande do Norte</option>
-                                        <option value="RS">Rio Grande do Sul</option>
-                                        <option value="RO">Rondônia</option>
-                                        <option value="RR">Roraima</option>
-                                        <option value="SC">Santa Catarina</option>
-                                        <option value="SP">São Paulo</option>
-                                        <option value="SE">Sergipe</option>
-                                        <option value="TO">Tocantins</option>
+                                        <option value="AC" @selected(old('state') == 'AC')>Acre</option>
+                                        <option value="AL" @selected(old('state') == 'AL')>Alagoas</option>
+                                        <option value="AP" @selected(old('state') == 'AP')>Amapá</option>
+                                        <option value="AM" @selected(old('state') == 'AM')>Amazonas</option>
+                                        <option value="BA" @selected(old('state') == 'BA')>Bahia</option>
+                                        <option value="CE" @selected(old('state') == 'CE')>Ceará</option>
+                                        <option value="DF" @selected(old('state') == 'DF')>Distrito Federal</option>
+                                        <option value="ES" @selected(old('state') == 'ES')>Espírito Santo</option>
+                                        <option value="GO" @selected(old('state') == 'GO')>Goiás</option>
+                                        <option value="MA" @selected(old('state') == 'MA')>Maranhão</option>
+                                        <option value="MT" @selected(old('state') == 'MT')>Mato Grosso</option>
+                                        <option value="MS" @selected(old('state') == 'MS')>Mato Grosso do Sul</option>
+                                        <option value="MG" @selected(old('state') == 'MG')>Minas Gerais</option>
+                                        <option value="PA" @selected(old('state') == 'PA')>Pará</option>
+                                        <option value="PB" @selected(old('state') == 'PB')>Paraíba</option>
+                                        <option value="PR" @selected(old('state') == 'PR')>Paraná</option>
+                                        <option value="PE" @selected(old('state') == 'PE')>Pernambuco</option>
+                                        <option value="PI" @selected(old('state') == 'PI')>Piauí</option>
+                                        <option value="RJ" @selected(old('state') == 'RJ')>Rio de Janeiro</option>
+                                        <option value="RN" @selected(old('state') == 'RN')>Rio Grande do Norte</option>
+                                        <option value="RS" @selected(old('state') == 'RS')>Rio Grande do Sul</option>
+                                        <option value="RO" @selected(old('state') == 'RO')>Rondônia</option>
+                                        <option value="RR" @selected(old('state') == 'RR')>Roraima</option>
+                                        <option value="SC" @selected(old('state') == 'SC')>Santa Catarina</option>
+                                        <option value="SP" @selected(old('state') == 'SP')>São Paulo</option>
+                                        <option value="SE" @selected(old('state') == 'SE')>Sergipe</option>
+                                        <option value="TO" @selected(old('state') == 'TO')>Tocantins</option>
                                     </select>
+                                    @error('state')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Cidade *</label>
                                     <input type="text" id="city" name="city"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
+                                        class="w-full px-3 py-3 border @error('city') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        value="{{ old('city') }}" required>
+                                    @error('city')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">CEP</label>
                                     <input type="text" id="cep" name="cep" placeholder="00000-000"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border @error('cep') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        value="{{ old('cep') }}">
+                                    @error('cep')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -189,7 +222,7 @@
                             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                                 @forelse($causas as $causa)
                                     <label
-                                        class="interest-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                        class="interest-card flex items-center p-4 border @error('causas') border-red-500 @else border-gray-200 @enderror rounded-lg cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="causas[]" value="{{ $causa->id }}"
                                             class="mr-3 text-blue-600" @checked(collect(old('causas', []))->contains($causa->id))>
                                         <span class="font-medium">{{ $causa->nome }}</span>
@@ -198,6 +231,9 @@
                                     <p class="text-gray-600">Nenhuma causa cadastrada no momento.</p>
                                 @endforelse
                             </div>
+                            @error('causas')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
 
                             <div class="space-y-6">
                                 <div>
@@ -205,22 +241,28 @@
                                         ONG *</label>
                                     <textarea id="mission" name="mission" rows="4"
                                         placeholder="Descreva brevemente a missão e objetivos da sua organização..."
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
-                                        required></textarea>
+                                        class="w-full px-3 py-3 border @error('mission') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
+                                        required>{{ old('mission') }}</textarea>
+                                    @error('mission')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Número de Beneficiários
                                         Atendidos</label>
                                     <select id="beneficiaries" name="beneficiaries"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border @error('beneficiaries') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="1-50">1 a 50 pessoas</option>
-                                        <option value="51-200">51 a 200 pessoas</option>
-                                        <option value="201-500">201 a 500 pessoas</option>
-                                        <option value="501-1000">501 a 1.000 pessoas</option>
-                                        <option value="1000+">Mais de 1.000 pessoas</option>
+                                        <option value="1-50" @selected(old('beneficiaries') == '1-50')>1 a 50 pessoas</option>
+                                        <option value="51-200" @selected(old('beneficiaries') == '51-200')>51 a 200 pessoas</option>
+                                        <option value="201-500" @selected(old('beneficiaries') == '201-500')>201 a 500 pessoas</option>
+                                        <option value="501-1000" @selected(old('beneficiaries') == '501-1000')>501 a 1.000 pessoas</option>
+                                        <option value="1000+" @selected(old('beneficiaries') == '1000+')>Mais de 1.000 pessoas</option>
                                     </select>
+                                    @error('beneficiaries')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -251,25 +293,28 @@
                                 <div class="space-y-2">
                                     <label class="flex items-center">
                                         <input type="checkbox" name="volunteer_types[]" value="presencial"
-                                            class="mr-3 text-blue-600">
+                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('presencial'))>
                                         <span>Voluntários presenciais</span>
                                     </label>
                                     <label class="flex items-center">
                                         <input type="checkbox" name="volunteer_types[]" value="remoto"
-                                            class="mr-3 text-blue-600">
+                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('remoto'))>
                                         <span>Voluntários remotos</span>
                                     </label>
                                     <label class="flex items-center">
                                         <input type="checkbox" name="volunteer_types[]" value="especializado"
-                                            class="mr-3 text-blue-600">
+                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('especializado'))>
                                         <span>Voluntários especializados (profissionais)</span>
                                     </label>
                                     <label class="flex items-center">
                                         <input type="checkbox" name="volunteer_types[]" value="pontual"
-                                            class="mr-3 text-blue-600">
+                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('pontual'))>
                                         <span>Voluntários para ações pontuais</span>
                                     </label>
                                 </div>
+                                @error('volunteer_types')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div>
@@ -277,15 +322,21 @@
                                     Desejadas</label>
                                 <textarea id="desired_skills" name="desired_skills" rows="3"
                                     placeholder="Ex: Marketing digital, contabilidade, ensino, cuidados médicos, etc."
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
+                                    class="w-full px-3 py-3 border @error('desired_skills') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none">{{ old('desired_skills') }}</textarea>
+                                @error('desired_skills')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Projetos Atuais *</label>
                                 <textarea id="current_projects" name="current_projects" rows="4"
                                     placeholder="Descreva os principais projetos em andamento que precisam de voluntários..."
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
-                                    required></textarea>
+                                    class="w-full px-3 py-3 border @error('current_projects') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
+                                    required>{{ old('current_projects') }}</textarea>
+                                @error('current_projects')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
@@ -293,26 +344,32 @@
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Frequência de
                                         Atividades</label>
                                     <select id="frequency" name="frequency"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border @error('frequency') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="diaria">Atividades diárias</option>
-                                        <option value="semanal">Atividades semanais</option>
-                                        <option value="mensal">Atividades mensais</option>
-                                        <option value="eventual">Atividades eventuais</option>
+                                        <option value="diaria" @selected(old('frequency') == 'diaria')>Atividades diárias</option>
+                                        <option value="semanal" @selected(old('frequency') == 'semanal')>Atividades semanais</option>
+                                        <option value="mensal" @selected(old('frequency') == 'mensal')>Atividades mensais</option>
+                                        <option value="eventual" @selected(old('frequency') == 'eventual')>Atividades eventuais</option>
                                     </select>
+                                    @error('frequency')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Número de Voluntários
                                         Ativos</label>
                                     <select id="active_volunteers" name="active_volunteers"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border @error('active_volunteers') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="0-5">0 a 5 voluntários</option>
-                                        <option value="6-15">6 a 15 voluntários</option>
-                                        <option value="16-30">16 a 30 voluntários</option>
-                                        <option value="31-50">31 a 50 voluntários</option>
-                                        <option value="50+">Mais de 50 voluntários</option>
+                                        <option value="0-5" @selected(old('active_volunteers') == '0-5')>0 a 5 voluntários</option>
+                                        <option value="6-15" @selected(old('active_volunteers') == '6-15')>6 a 15 voluntários</option>
+                                        <option value="16-30" @selected(old('active_volunteers') == '16-30')>16 a 30 voluntários</option>
+                                        <option value="31-50" @selected(old('active_volunteers') == '31-50')>31 a 50 voluntários</option>
+                                        <option value="50+" @selected(old('active_volunteers') == '50+')>Mais de 50 voluntários</option>
                                     </select>
+                                    @error('active_volunteers')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -320,12 +377,22 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Pessoa Responsável pelo
                                     Contato *</label>
                                 <div class="grid md:grid-cols-2 gap-4">
-                                    <input type="text" id="contact_name" name="contact_name" placeholder="Nome completo"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
-                                    <input type="text" id="contact_role" name="contact_role" placeholder="Cargo/Função"
-                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        required>
+                                    <div>
+                                        <input type="text" id="contact_name" name="contact_name" placeholder="Nome completo"
+                                            class="w-full px-3 py-3 border @error('contact_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            value="{{ old('contact_name') }}" required>
+                                        @error('contact_name')
+                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div>
+                                        <input type="text" id="contact_role" name="contact_role" placeholder="Cargo/Função"
+                                            class="w-full px-3 py-3 border @error('contact_role') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                            value="{{ old('contact_role') }}" required>
+                                        @error('contact_role')
+                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -353,8 +420,11 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Senha *</label>
                                 <input type="password" id="password" name="password"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    class="w-full px-3 py-3 border @error('password') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                     required>
+                                @error('password')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div>
@@ -424,10 +494,13 @@
                                     <a href="#" class="text-blue-600 hover:underline">Política de Privacidade</a> *
                                 </label>
                             </div>
+                            @error('terms')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
 
                             <div class="flex items-start">
-                                <input type="checkbox" id="newsletter" name="newsletter"
-                                    class="mt-1 mr-3 text-blue-600">
+                                <input type="checkbox" id="newsletter" name="newsletter" value="1"
+                                    class="mt-1 mr-3 text-blue-600" @checked(old('newsletter'))>
                                 <label for="newsletter" class="text-sm text-gray-600">
                                     Quero receber novidades sobre voluntários e funcionalidades da plataforma
                                 </label>

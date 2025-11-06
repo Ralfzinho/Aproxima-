@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class Ong extends Model
 {
@@ -49,7 +50,7 @@ class Ong extends Model
             // Identificação
             'org_name'          => ['required','string','max:180'],
             'email'             => ['required','email','max:180','unique:ongs,email'],
-            'password'          => ['required','string','min:8','confirmed'], // exige password_confirmation
+            'password'          => ['required','string', Password::defaults(), 'confirmed'],
             'cnpj'              => ['required','regex:/^\d{14}$/','unique:ongs,cnpj'],
             'founding_year'     => ['nullable','integer','between:1800,'.date('Y')],
 
