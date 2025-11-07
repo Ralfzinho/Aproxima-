@@ -13,51 +13,24 @@ use App\Models\User;
 use App\Models\Causa;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\OngController;
+use App\Http\Controllers\VoluntarioController;
 
 Route::middleware(['auth'])->group(function () {
     Route::view('/inicio', 'index')->name('inicio')->middleware('verified');
     Route::view('/admin', 'admin.index')->name('admin.index');
 });
 
-// GET do formulário
-Route::get('/cadastro_voluntario', function () {
-    $causas = Causa::orderBy('nome')->get();
-    return view('cadastro_voluntario', compact('causas'));
-})->name('cadastro_voluntario');
-
-// POST do formulário
-Route::post('/cadastro_voluntario', function (Request $request) {
-    $validated = User::validateVoluntario($request->all());
-    $user      = User::createVoluntario($validated);
-
-    Auth::login($user);
-
-    // redireciona para a tela de início (home '/')
-    return redirect()->route('inicio');
-})->name('cadastro_voluntario.store');
-
-// GET do formulário
-Route::get('/cadastro_ong', function () {
-    $causas = Causa::orderBy('nome')->get();
-    return view('cadastro_ong', compact('causas'));
-})->name('cadastro_ong');
-
-// POST do formulário 
-Route::post('/cadastro_ong', function (Request $request) {
-    $validated = Ong::validateCadastro($request->all());
-    $ong     = Ong::createCadastro($validated);
-
-    // se não há autenticação de ONG, só redireciona com flash
-    return redirect()->route('inicio')->with('success', 'ONG cadastrada com sucesso!');
-})->name('cadastro_ong.store');
-
-
+Route::get('/cadastro_voluntario', [VoluntarioController::class, 'create'])->name('cadastro_voluntario');
+Route::post('/cadastro_voluntario', [VoluntarioController::class, 'store'])->name('cadastro_voluntario.store');
+Route::get('/cadastro_ong', [OngController::class, 'create'])->name('cadastro_ong');
+Route::post('/cadastro_ong', [OngController::class, 'store'])->name('cadastro_ong.store');
 Route::view('/', 'welcome')->name('home');
 Route::view('/como-funciona', 'comofunciona')->name('como-funciona');
 Route::view('/ongs', 'ongs')->name('ongs');
 Route::view('/infocausas', 'infocausas')->name('causas');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
 Route::view('/admin', 'admin.index')->name('admin');
+Route::view('/entrar', 'entrar')->name('entrar');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
