@@ -20,17 +20,21 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/admin', 'admin.index')->name('admin.index');
 });
 
+// Cadastro de Voluntário
 Route::get('/cadastro_voluntario', [VoluntarioController::class, 'create'])->name('cadastro_voluntario');
 Route::post('/cadastro_voluntario', [VoluntarioController::class, 'store'])->name('cadastro_voluntario.store');
+
+// Cadastro de ONG
 Route::get('/cadastro_ong', [OngController::class, 'create'])->name('cadastro_ong');
 Route::post('/cadastro_ong', [OngController::class, 'store'])->name('cadastro_ong.store');
+
+
 Route::view('/', 'welcome')->name('home');
 Route::view('/como-funciona', 'comofunciona')->name('como-funciona');
 Route::view('/ongs', 'ongs')->name('ongs');
 Route::view('/infocausas', 'infocausas')->name('causas');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
 Route::view('/admin', 'admin.index')->name('admin');
-Route::view('/entrar', 'entrar')->name('entrar');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

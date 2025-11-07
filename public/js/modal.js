@@ -51,7 +51,7 @@ function showAppModal({ title, message, type = 'info', footerHtml = null }) {
 
     iconContainer.innerHTML = config.iconSvg;
     iconContainer.className = `flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full ${config.bgColor} ${config.iconColor}`;
-    
+
     if (footerHtml) {
         modalFooter.innerHTML = footerHtml;
     } else {

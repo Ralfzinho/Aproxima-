@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (text.includes('Termos') || text.includes('Política')) {
                 message = `Abrindo ${text}...`;
             }
-            
+
             showInlineMessage(message, 'info');
         });
     });

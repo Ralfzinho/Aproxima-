@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-    @include('partials.head')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo-aproxima.png') }}">
+    <title>Aproxima+ Como Funciona</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/comofunciona.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 
 <body>
