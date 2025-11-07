@@ -35,6 +35,7 @@ Route::view('/ongs', 'ongs')->name('ongs');
 Route::view('/infocausas', 'infocausas')->name('causas');
 Route::view('/cadastro', 'cadastro')->name('cadastro');
 Route::view('/admin', 'admin.index')->name('admin');
+Route::view('/entrar', 'entrar')->name('entrar');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

@@ -3,8 +3,7 @@
 
 <head>
     @include('partials.head')
-    {{-- Você pode adicionar CSS específico para a página de login aqui, se necessário --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/login.css') }}"> --}}
+
 </head>
 
 <body class="min-h-full flex items-center justify-center p-4">
