@@ -3,7 +3,6 @@
 
 <head>
     @include('partials.head')
-
 </head>
 
 <body class="min-h-full flex items-center justify-center p-4">
