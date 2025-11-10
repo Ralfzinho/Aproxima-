@@ -74,7 +74,7 @@
                                     class="w-full px-3 py-3 border @error('org_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                     value="{{ old('org_name') }}" required>
                                 @error('org_name')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -85,7 +85,7 @@
                                         class="w-full px-3 py-3 border @error('cnpj') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         value="{{ old('cnpj') }}" required>
                                     @error('cnpj')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div>
@@ -94,7 +94,7 @@
                                         class="w-full px-3 py-3 border @error('founding_year') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         value="{{ old('founding_year') }}">
                                     @error('founding_year')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                                     class="w-full px-3 py-3 border @error('email') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                     value="{{ old('email') }}" required>
                                 @error('email')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -117,7 +117,7 @@
                                         class="w-full px-3 py-3 border @error('phone') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         value="{{ old('phone') }}" required>
                                     @error('phone')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div>
@@ -128,7 +128,7 @@
                                         class="w-full px-3 py-3 border @error('website') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         value="{{ old('website') }}">
                                     @error('website')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                                     class="w-full px-3 py-3 border @error('address') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                     value="{{ old('address') }}" required>
                                 @error('address')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -150,36 +150,36 @@
                                         class="w-full px-3 py-3 border @error('state') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         required>
                                         <option value="">Selecione seu estado</option>
-                                        <option value="AC" @selected(old('state') == 'AC')>Acre</option>
-                                        <option value="AL" @selected(old('state') == 'AL')>Alagoas</option>
-                                        <option value="AP" @selected(old('state') == 'AP')>Amapá</option>
-                                        <option value="AM" @selected(old('state') == 'AM')>Amazonas</option>
-                                        <option value="BA" @selected(old('state') == 'BA')>Bahia</option>
-                                        <option value="CE" @selected(old('state') == 'CE')>Ceará</option>
-                                        <option value="DF" @selected(old('state') == 'DF')>Distrito Federal</option>
-                                        <option value="ES" @selected(old('state') == 'ES')>Espírito Santo</option>
-                                        <option value="GO" @selected(old('state') == 'GO')>Goiás</option>
-                                        <option value="MA" @selected(old('state') == 'MA')>Maranhão</option>
-                                        <option value="MT" @selected(old('state') == 'MT')>Mato Grosso</option>
-                                        <option value="MS" @selected(old('state') == 'MS')>Mato Grosso do Sul</option>
-                                        <option value="MG" @selected(old('state') == 'MG')>Minas Gerais</option>
-                                        <option value="PA" @selected(old('state') == 'PA')>Pará</option>
-                                        <option value="PB" @selected(old('state') == 'PB')>Paraíba</option>
-                                        <option value="PR" @selected(old('state') == 'PR')>Paraná</option>
-                                        <option value="PE" @selected(old('state') == 'PE')>Pernambuco</option>
-                                        <option value="PI" @selected(old('state') == 'PI')>Piauí</option>
-                                        <option value="RJ" @selected(old('state') == 'RJ')>Rio de Janeiro</option>
-                                        <option value="RN" @selected(old('state') == 'RN')>Rio Grande do Norte</option>
-                                        <option value="RS" @selected(old('state') == 'RS')>Rio Grande do Sul</option>
-                                        <option value="RO" @selected(old('state') == 'RO')>Rondônia</option>
-                                        <option value="RR" @selected(old('state') == 'RR')>Roraima</option>
-                                        <option value="SC" @selected(old('state') == 'SC')>Santa Catarina</option>
-                                        <option value="SP" @selected(old('state') == 'SP')>São Paulo</option>
-                                        <option value="SE" @selected(old('state') == 'SE')>Sergipe</option>
-                                        <option value="TO" @selected(old('state') == 'TO')>Tocantins</option>
+                                        <option value="AC" @selected(old('state')=='AC' )>Acre</option>
+                                        <option value="AL" @selected(old('state')=='AL' )>Alagoas</option>
+                                        <option value="AP" @selected(old('state')=='AP' )>Amapá</option>
+                                        <option value="AM" @selected(old('state')=='AM' )>Amazonas</option>
+                                        <option value="BA" @selected(old('state')=='BA' )>Bahia</option>
+                                        <option value="CE" @selected(old('state')=='CE' )>Ceará</option>
+                                        <option value="DF" @selected(old('state')=='DF' )>Distrito Federal</option>
+                                        <option value="ES" @selected(old('state')=='ES' )>Espírito Santo</option>
+                                        <option value="GO" @selected(old('state')=='GO' )>Goiás</option>
+                                        <option value="MA" @selected(old('state')=='MA' )>Maranhão</option>
+                                        <option value="MT" @selected(old('state')=='MT' )>Mato Grosso</option>
+                                        <option value="MS" @selected(old('state')=='MS' )>Mato Grosso do Sul</option>
+                                        <option value="MG" @selected(old('state')=='MG' )>Minas Gerais</option>
+                                        <option value="PA" @selected(old('state')=='PA' )>Pará</option>
+                                        <option value="PB" @selected(old('state')=='PB' )>Paraíba</option>
+                                        <option value="PR" @selected(old('state')=='PR' )>Paraná</option>
+                                        <option value="PE" @selected(old('state')=='PE' )>Pernambuco</option>
+                                        <option value="PI" @selected(old('state')=='PI' )>Piauí</option>
+                                        <option value="RJ" @selected(old('state')=='RJ' )>Rio de Janeiro</option>
+                                        <option value="RN" @selected(old('state')=='RN' )>Rio Grande do Norte</option>
+                                        <option value="RS" @selected(old('state')=='RS' )>Rio Grande do Sul</option>
+                                        <option value="RO" @selected(old('state')=='RO' )>Rondônia</option>
+                                        <option value="RR" @selected(old('state')=='RR' )>Roraima</option>
+                                        <option value="SC" @selected(old('state')=='SC' )>Santa Catarina</option>
+                                        <option value="SP" @selected(old('state')=='SP' )>São Paulo</option>
+                                        <option value="SE" @selected(old('state')=='SE' )>Sergipe</option>
+                                        <option value="TO" @selected(old('state')=='TO' )>Tocantins</option>
                                     </select>
                                     @error('state')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div>
@@ -188,7 +188,7 @@
                                         class="w-full px-3 py-3 border @error('city') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         value="{{ old('city') }}" required>
                                     @error('city')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div>
@@ -197,7 +197,7 @@
                                         class="w-full px-3 py-3 border @error('cep') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         value="{{ old('cep') }}">
                                     @error('cep')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -221,18 +221,18 @@
                         <div class="max-w-4xl mx-auto">
                             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                                 @forelse($causas as $causa)
-                                    <label
-                                        class="interest-card flex items-center p-4 border @error('causas') border-red-500 @else border-gray-200 @enderror rounded-lg cursor-pointer hover:bg-gray-50">
-                                        <input type="checkbox" name="causas[]" value="{{ $causa->id }}"
-                                            class="mr-3 text-blue-600" @checked(collect(old('causas', []))->contains($causa->id))>
-                                        <span class="font-medium">{{ $causa->nome }}</span>
-                                    </label>
+                                <label
+                                    class="interest-card flex items-center p-4 border @error('causas') border-red-500 @else border-gray-200 @enderror rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="causas[]" value="{{ $causa->id }}"
+                                        class="mr-3 text-blue-600" @checked(collect(old('causas', []))->contains($causa->id))>
+                                    <span class="font-medium">{{ $causa->nome }}</span>
+                                </label>
                                 @empty
-                                    <p class="text-gray-600">Nenhuma causa cadastrada no momento.</p>
+                                <p class="text-gray-600">Nenhuma causa cadastrada no momento.</p>
                                 @endforelse
                             </div>
                             @error('causas')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
 
                             <div class="space-y-6">
@@ -244,7 +244,7 @@
                                         class="w-full px-3 py-3 border @error('mission') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
                                         required>{{ old('mission') }}</textarea>
                                     @error('mission')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
 
@@ -254,14 +254,14 @@
                                     <select id="beneficiaries" name="beneficiaries"
                                         class="w-full px-3 py-3 border @error('beneficiaries') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="1-50" @selected(old('beneficiaries') == '1-50')>1 a 50 pessoas</option>
-                                        <option value="51-200" @selected(old('beneficiaries') == '51-200')>51 a 200 pessoas</option>
-                                        <option value="201-500" @selected(old('beneficiaries') == '201-500')>201 a 500 pessoas</option>
-                                        <option value="501-1000" @selected(old('beneficiaries') == '501-1000')>501 a 1.000 pessoas</option>
-                                        <option value="1000+" @selected(old('beneficiaries') == '1000+')>Mais de 1.000 pessoas</option>
+                                        <option value="1-50" @selected(old('beneficiaries')=='1-50' )>1 a 50 pessoas</option>
+                                        <option value="51-200" @selected(old('beneficiaries')=='51-200' )>51 a 200 pessoas</option>
+                                        <option value="201-500" @selected(old('beneficiaries')=='201-500' )>201 a 500 pessoas</option>
+                                        <option value="501-1000" @selected(old('beneficiaries')=='501-1000' )>501 a 1.000 pessoas</option>
+                                        <option value="1000+" @selected(old('beneficiaries')=='1000+' )>Mais de 1.000 pessoas</option>
                                     </select>
                                     @error('beneficiaries')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -313,7 +313,7 @@
                                     </label>
                                 </div>
                                 @error('volunteer_types')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -324,7 +324,7 @@
                                     placeholder="Ex: Marketing digital, contabilidade, ensino, cuidados médicos, etc."
                                     class="w-full px-3 py-3 border @error('desired_skills') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none">{{ old('desired_skills') }}</textarea>
                                 @error('desired_skills')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -335,7 +335,7 @@
                                     class="w-full px-3 py-3 border @error('current_projects') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
                                     required>{{ old('current_projects') }}</textarea>
                                 @error('current_projects')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
 
@@ -346,13 +346,13 @@
                                     <select id="frequency" name="frequency"
                                         class="w-full px-3 py-3 border @error('frequency') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="diaria" @selected(old('frequency') == 'diaria')>Atividades diárias</option>
-                                        <option value="semanal" @selected(old('frequency') == 'semanal')>Atividades semanais</option>
-                                        <option value="mensal" @selected(old('frequency') == 'mensal')>Atividades mensais</option>
-                                        <option value="eventual" @selected(old('frequency') == 'eventual')>Atividades eventuais</option>
+                                        <option value="diaria" @selected(old('frequency')=='diaria' )>Atividades diárias</option>
+                                        <option value="semanal" @selected(old('frequency')=='semanal' )>Atividades semanais</option>
+                                        <option value="mensal" @selected(old('frequency')=='mensal' )>Atividades mensais</option>
+                                        <option value="eventual" @selected(old('frequency')=='eventual' )>Atividades eventuais</option>
                                     </select>
                                     @error('frequency')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div>
@@ -361,14 +361,14 @@
                                     <select id="active_volunteers" name="active_volunteers"
                                         class="w-full px-3 py-3 border @error('active_volunteers') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="0-5" @selected(old('active_volunteers') == '0-5')>0 a 5 voluntários</option>
-                                        <option value="6-15" @selected(old('active_volunteers') == '6-15')>6 a 15 voluntários</option>
-                                        <option value="16-30" @selected(old('active_volunteers') == '16-30')>16 a 30 voluntários</option>
-                                        <option value="31-50" @selected(old('active_volunteers') == '31-50')>31 a 50 voluntários</option>
-                                        <option value="50+" @selected(old('active_volunteers') == '50+')>Mais de 50 voluntários</option>
+                                        <option value="0-5" @selected(old('active_volunteers')=='0-5' )>0 a 5 voluntários</option>
+                                        <option value="6-15" @selected(old('active_volunteers')=='6-15' )>6 a 15 voluntários</option>
+                                        <option value="16-30" @selected(old('active_volunteers')=='16-30' )>16 a 30 voluntários</option>
+                                        <option value="31-50" @selected(old('active_volunteers')=='31-50' )>31 a 50 voluntários</option>
+                                        <option value="50+" @selected(old('active_volunteers')=='50+' )>Mais de 50 voluntários</option>
                                     </select>
                                     @error('active_volunteers')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -382,7 +382,7 @@
                                             class="w-full px-3 py-3 border @error('contact_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                             value="{{ old('contact_name') }}" required>
                                         @error('contact_name')
-                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div>
@@ -390,7 +390,7 @@
                                             class="w-full px-3 py-3 border @error('contact_role') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                             value="{{ old('contact_role') }}" required>
                                         @error('contact_role')
-                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -419,19 +419,51 @@
                         <div class="max-w-md mx-auto space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Senha *</label>
-                                <input type="password" id="password" name="password"
-                                    class="w-full px-3 py-3 border @error('password') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
-                                @error('password')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                            </div>
+                                <div class="relative">
+                                    <input type="password" id="password" placeholder="********" class="input-field w-full px-4 py-3 pl-12 pr-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" name="password" required>
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center  pointer-events-none">
+                                        <svg class="h-5 w-5 tezt-gray-400" fill="currentColor" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
 
+                                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center">
+                                        <button type="button" class="password-toggler text-gray-400" onclick="togglerPassword('password')">
+                                            <svg id="eye-open-password" class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                            </svg>
+                                            <svg id="eye-closed-password" class="h-5 w-5 hidden" fill="currentColor" viewbox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
+                                                <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Confirmar Senha *</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation"
-                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    required>
+                                <div class="relative">
+                                    <input type="password" id="password_confirmation" placeholder="********" class="input-field w-full px-4 py-3 pl-12 pr-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" name="password_confirmation" required>
+                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center  pointer-events-none">
+                                        <svg class="h-5 w-5 tezt-gray-400" fill="currentColor" viewbox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center">
+                                        <button type="button" class="password-toggler text-gray-400" onclick="togglerPassword('password_confirmation')">
+                                            <svg id="eye-open-password_confirmation" class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                            </svg>
+                                            <svg id="eye-closed-password_confirmation" class="h-5 w-5 hidden" fill="currentColor" viewbox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
+                                                <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Password Requirements -->
@@ -495,7 +527,7 @@
                                 </label>
                             </div>
                             @error('terms')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
 
                             <div class="flex items-start">
@@ -685,7 +717,21 @@
 
             return true;
         }
-
+        // Password visibility toggle
+        function togglerPassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const eyeOpen = document.getElementById(`eye-open-${fieldId}`);
+            const eyeClosed = document.getElementById(`eye-closed-${fieldId}`);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeOpen.classList.add('hidden');
+                eyeClosed.classList.remove('hidden');
+            } else {
+                passwordField.type = "password";
+                eyeOpen.classList.remove('hidden');
+                eyeClosed.classList.add('hidden');
+            }
+        }
         // Password validation functions
         function validatePassword(password) {
             const requirements = {
@@ -773,7 +819,7 @@
         }
 
         // Password field event listeners
-        document.getElementById('password').addEventListener('input', function () {
+        document.getElementById('password').addEventListener('input', function() {
             const password = this.value;
             validatePassword(password);
 
@@ -784,7 +830,7 @@
             }
         });
 
-        document.getElementById('password_confirmation').addEventListener('input', function () {
+        document.getElementById('password_confirmation').addEventListener('input', function() {
             checkPasswordMatch();
         });
 
