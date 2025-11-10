@@ -57,7 +57,7 @@
 
             <!-- Link para Cadastro -->
             <div class="mt-6 text-center">
-                <p class="text-sm text-gray-600">Não tem uma conta? <a href="{{ route('register') }}" class="font-medium text-blue-600 hover:text-blue-500">Cadastre-se gratuitamente</a></p>
+                <p class="text-sm text-gray-600">Não tem uma conta? <a href="{{ route('cadastro') }}" class="font-medium text-blue-600 hover:text-blue-500">Cadastre-se gratuitamente</a></p>
             </div>
     </form>
 </div>
