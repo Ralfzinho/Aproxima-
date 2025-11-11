@@ -60,12 +60,5 @@
                 <p class="text-sm text-gray-600">Não tem uma conta? <a href="{{ route('cadastro') }}" class="font-medium text-blue-600 hover:text-blue-500">Cadastre-se gratuitamente</a></p>
             </div>
     </form>
-
-    @if (Route::has('register'))
-        <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
-            <span>{{ __('Don\'t have an account?') }}</span>
-            <flux:link :href="route('cadastro_voluntario')" wire:navigate>{{ __('Sign up') }}</flux:link>
-        </div>
-    @endif
 </div>
     
