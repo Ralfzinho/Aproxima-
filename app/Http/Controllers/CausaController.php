@@ -13,7 +13,9 @@ class CausaController extends Controller
      */
     public function index()
     {
-        $causas = Causa::all();
+        $causas = causa::orderByDesc('id')
+            ->paginate(5)                
+            ->withQueryString();
         return view("causas.index", compact("causas"));
     }
 

@@ -16,5 +16,6 @@
 <link rel="stylesheet" href="{{ asset('css/ongs.css') }}">
 <link rel="stylesheet" href="{{ asset('css/entrar.css') }}">
 <link rel="stylesheet" href="{{ asset('css/admin_ajuda.css') }}">
+@livewireStyles
 <script src="https://cdn.tailwindcss.com"></script>
 @fluxAppearance
