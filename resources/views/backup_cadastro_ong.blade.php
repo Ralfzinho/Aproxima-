@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo-aproxima.png') }}">
     <title>Aproxima+ conectando você a quem precisa</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,21 +12,22 @@
     <link rel="stylesheet" href="{{ asset('css/cadastro_ong.css') }}">
 </head>
 
-
 <body>
     @include('partials.header')
     <script src="{{ asset('js/app.js') }}"></script>
 
-
+    <!-- Main Content -->
     <div class="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
+            <!-- Header -->
             <div class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-white mb-4">Cadastro de ONG</h1>
                 <p class="text-xl text-blue-100">Conecte sua organização com voluntários engajados</p>
             </div>
 
-
+            <!-- Registration Form Container -->
             <div class="form-container rounded-2xl shadow-2xl p-8 md:p-12">
+                <!-- Progress Bar -->
                 <div class="mb-8">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-sm font-medium text-gray-600">Progresso do cadastro</span>
@@ -39,7 +38,7 @@
                     </div>
                 </div>
 
-
+                <!-- Step Indicators -->
                 <div class="flex justify-center mb-12">
                     <div class="flex space-x-4">
                         <div
@@ -57,9 +56,7 @@
                     </div>
                 </div>
 
-
-                <form id="registration-form" method="POST" action="{{ route('cadastro_ong.store') }}">
-                    @csrf
+                <form id="registration-form">
                     <!-- Step 1: Organization Information -->
                     <div class="form-step active" id="step-1">
                         <div class="text-center mb-8">
@@ -70,32 +67,22 @@
                         <div class="max-w-2xl mx-auto space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Nome da ONG *</label>
-                                <input type="text" id="org_name" name="org_name"
-                                    class="w-full px-3 py-3 border @error('org_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    value="{{ old('org_name') }}" required>
-                                @error('org_name')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                                <input type="text" id="orgName" name="orgName"
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    required>
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">CNPJ *</label>
                                     <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00"
-                                        class="w-full px-3 py-3 border @error('cnpj') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        value="{{ old('cnpj') }}" required>
-                                    @error('cnpj')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Ano de Fundação</label>
-                                    <input type="number" id="founding_year" name="founding_year" min="1900" max="2024"
-                                        class="w-full px-3 py-3 border @error('founding_year') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        value="{{ old('founding_year') }}">
-                                    @error('founding_year')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                    <input type="number" id="foundingYear" name="foundingYear" min="1900" max="2024"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                 </div>
                             </div>
 
@@ -103,102 +90,79 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">E-mail Institucional
                                     *</label>
                                 <input type="email" id="email" name="email"
-                                    class="w-full px-3 py-3 border @error('email') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    value="{{ old('email') }}" required>
-                                @error('email')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    required>
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Telefone *</label>
                                     <input type="tel" id="phone" name="phone" placeholder="(11) 3333-3333"
-                                        class="w-full px-3 py-3 border @error('phone') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        value="{{ old('phone') }}" required>
-                                    @error('phone')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Site/Redes
                                         Sociais</label>
-                                    <input type="text" id="website" name="website"
+                                    <input type="url" id="website" name="website"
                                         placeholder="https://www.suaong.org.br"
-                                        class="w-full px-3 py-3 border @error('website') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        value="{{ old('website') }}">
-                                    @error('website')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                 </div>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Endereço Completo *</label>
                                 <input type="text" id="address" name="address" placeholder="Rua, número, bairro"
-                                    class="w-full px-3 py-3 border @error('address') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                    value="{{ old('address') }}" required>
-                                @error('address')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    required>
                             </div>
 
                             <div class="grid md:grid-cols-3 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Estado *</label>
                                     <select id="state" name="state"
-                                        class="w-full px-3 py-3 border @error('state') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                                         required>
                                         <option value="">Selecione seu estado</option>
-                                        <option value="AC" @selected(old('state')=='AC' )>Acre</option>
-                                        <option value="AL" @selected(old('state')=='AL' )>Alagoas</option>
-                                        <option value="AP" @selected(old('state')=='AP' )>Amapá</option>
-                                        <option value="AM" @selected(old('state')=='AM' )>Amazonas</option>
-                                        <option value="BA" @selected(old('state')=='BA' )>Bahia</option>
-                                        <option value="CE" @selected(old('state')=='CE' )>Ceará</option>
-                                        <option value="DF" @selected(old('state')=='DF' )>Distrito Federal</option>
-                                        <option value="ES" @selected(old('state')=='ES' )>Espírito Santo</option>
-                                        <option value="GO" @selected(old('state')=='GO' )>Goiás</option>
-                                        <option value="MA" @selected(old('state')=='MA' )>Maranhão</option>
-                                        <option value="MT" @selected(old('state')=='MT' )>Mato Grosso</option>
-                                        <option value="MS" @selected(old('state')=='MS' )>Mato Grosso do Sul</option>
-                                        <option value="MG" @selected(old('state')=='MG' )>Minas Gerais</option>
-                                        <option value="PA" @selected(old('state')=='PA' )>Pará</option>
-                                        <option value="PB" @selected(old('state')=='PB' )>Paraíba</option>
-                                        <option value="PR" @selected(old('state')=='PR' )>Paraná</option>
-                                        <option value="PE" @selected(old('state')=='PE' )>Pernambuco</option>
-                                        <option value="PI" @selected(old('state')=='PI' )>Piauí</option>
-                                        <option value="RJ" @selected(old('state')=='RJ' )>Rio de Janeiro</option>
-                                        <option value="RN" @selected(old('state')=='RN' )>Rio Grande do Norte</option>
-                                        <option value="RS" @selected(old('state')=='RS' )>Rio Grande do Sul</option>
-                                        <option value="RO" @selected(old('state')=='RO' )>Rondônia</option>
-                                        <option value="RR" @selected(old('state')=='RR' )>Roraima</option>
-                                        <option value="SC" @selected(old('state')=='SC' )>Santa Catarina</option>
-                                        <option value="SP" @selected(old('state')=='SP' )>São Paulo</option>
-                                        <option value="SE" @selected(old('state')=='SE' )>Sergipe</option>
-                                        <option value="TO" @selected(old('state')=='TO' )>Tocantins</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
                                     </select>
-                                    @error('state')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Cidade *</label>
                                     <input type="text" id="city" name="city"
-                                        class="w-full px-3 py-3 border @error('city') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        value="{{ old('city') }}" required>
-                                    @error('city')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">CEP</label>
                                     <input type="text" id="cep" name="cep" placeholder="00000-000"
-                                        class="w-full px-3 py-3 border @error('cep') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                        value="{{ old('cep') }}">
-                                    @error('cep')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                 </div>
                             </div>
                         </div>
@@ -220,20 +184,95 @@
 
                         <div class="max-w-4xl mx-auto">
                             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                                @forelse($causas as $causa)
                                 <label
-                                    class="interest-card flex items-center p-4 border @error('causas') border-red-500 @else border-gray-200 @enderror rounded-lg cursor-pointer hover:bg-gray-50">
-                                    <input type="checkbox" name="causas[]" value="{{ $causa->id }}"
-                                        class="mr-3 text-blue-600" @checked(collect(old('causas', []))->contains($causa->id))>
-                                    <span class="font-medium">{{ $causa->nome }}</span>
+                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="areas" value="meio-ambiente"
+                                        class="mr-3 text-blue-600">
+                                    <div class="flex items-center">
+                                        <div class="bg-green-100 rounded-full p-2 mr-3">
+                                            <svg class="h-5 w-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.66c.03-.08.06-.17.09-.25.16-.42.25-.88.25-1.36V18l.24-.14c2.79-1.64 5.91-1.97 9.09-.84 1.66.59 3.13 1.48 4.37 2.64.19-.78.3-1.6.3-2.44V8zm-2-4H9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Meio Ambiente</span>
+                                    </div>
                                 </label>
-                                @empty
-                                <p class="text-gray-600">Nenhuma causa cadastrada no momento.</p>
-                                @endforelse
+
+                                <label
+                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="areas" value="educacao" class="mr-3 text-blue-600">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-100 rounded-full p-2 mr-3">
+                                            <svg class="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Educação</span>
+                                    </div>
+                                </label>
+
+                                <label
+                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="areas" value="saude" class="mr-3 text-blue-600">
+                                    <div class="flex items-center">
+                                        <div class="bg-pink-100 rounded-full p-2 mr-3">
+                                            <svg class="h-5 w-5 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3z" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Saúde</span>
+                                    </div>
+                                </label>
+
+                                <label
+                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="areas" value="animais" class="mr-3 text-blue-600">
+                                    <div class="flex items-center">
+                                        <div class="bg-yellow-100 rounded-full p-2 mr-3">
+                                            <svg class="h-5 w-5 text-yellow-600" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Proteção Animal</span>
+                                    </div>
+                                </label>
+
+                                <label
+                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="areas" value="direitos-humanos"
+                                        class="mr-3 text-blue-600">
+                                    <div class="flex items-center">
+                                        <div class="bg-purple-100 rounded-full p-2 mr-3">
+                                            <svg class="h-5 w-5 text-purple-600" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Direitos Humanos</span>
+                                    </div>
+                                </label>
+
+                                <label
+                                    class="area-card flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                    <input type="checkbox" name="areas" value="assistencia-social"
+                                        class="mr-3 text-blue-600">
+                                    <div class="flex items-center">
+                                        <div class="bg-orange-100 rounded-full p-2 mr-3">
+                                            <svg class="h-5 w-5 text-orange-600" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.5 7.5h-3A1.5 1.5 0 0 0 14.04 8.37L11.5 16H14v6h6zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm2 16v-6H10l-2.54-7.63A1.5 1.5 0 0 0 6 7.5H3A1.5 1.5 0 0 0 1.54 8.37L-1 16h2.5v6h6z" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium">Assistência Social</span>
+                                    </div>
+                                </label>
                             </div>
-                            @error('causas')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
 
                             <div class="space-y-6">
                                 <div>
@@ -241,28 +280,22 @@
                                         ONG *</label>
                                     <textarea id="mission" name="mission" rows="4"
                                         placeholder="Descreva brevemente a missão e objetivos da sua organização..."
-                                        class="w-full px-3 py-3 border @error('mission') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
-                                        required>{{ old('mission') }}</textarea>
-                                    @error('mission')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
+                                        required></textarea>
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Número de Beneficiários
                                         Atendidos</label>
                                     <select id="beneficiaries" name="beneficiaries"
-                                        class="w-full px-3 py-3 border @error('beneficiaries') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="1-50" @selected(old('beneficiaries')=='1-50' )>1 a 50 pessoas</option>
-                                        <option value="51-200" @selected(old('beneficiaries')=='51-200' )>51 a 200 pessoas</option>
-                                        <option value="201-500" @selected(old('beneficiaries')=='201-500' )>201 a 500 pessoas</option>
-                                        <option value="501-1000" @selected(old('beneficiaries')=='501-1000' )>501 a 1.000 pessoas</option>
-                                        <option value="1000+" @selected(old('beneficiaries')=='1000+' )>Mais de 1.000 pessoas</option>
+                                        <option value="1-50">1 a 50 pessoas</option>
+                                        <option value="51-200">51 a 200 pessoas</option>
+                                        <option value="201-500">201 a 500 pessoas</option>
+                                        <option value="501-1000">501 a 1.000 pessoas</option>
+                                        <option value="1000+">Mais de 1.000 pessoas</option>
                                     </select>
-                                    @error('beneficiaries')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -292,51 +325,42 @@
                                     Procurados *</label>
                                 <div class="space-y-2">
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteer_types[]" value="presencial"
-                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('presencial'))>
+                                        <input type="checkbox" name="volunteerTypes" value="presencial"
+                                            class="mr-3 text-blue-600">
                                         <span>Voluntários presenciais</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteer_types[]" value="remoto"
-                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('remoto'))>
+                                        <input type="checkbox" name="volunteerTypes" value="remoto"
+                                            class="mr-3 text-blue-600">
                                         <span>Voluntários remotos</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteer_types[]" value="especializado"
-                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('especializado'))>
+                                        <input type="checkbox" name="volunteerTypes" value="especializado"
+                                            class="mr-3 text-blue-600">
                                         <span>Voluntários especializados (profissionais)</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="checkbox" name="volunteer_types[]" value="pontual"
-                                            class="mr-3 text-blue-600" @checked(collect(old('volunteer_types', []))->contains('pontual'))>
+                                        <input type="checkbox" name="volunteerTypes" value="pontual"
+                                            class="mr-3 text-blue-600">
                                         <span>Voluntários para ações pontuais</span>
                                     </label>
                                 </div>
-                                @error('volunteer_types')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Habilidades
                                     Desejadas</label>
-                                <textarea id="desired_skills" name="desired_skills" rows="3"
+                                <textarea id="desiredSkills" name="desiredSkills" rows="3"
                                     placeholder="Ex: Marketing digital, contabilidade, ensino, cuidados médicos, etc."
-                                    class="w-full px-3 py-3 border @error('desired_skills') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none">{{ old('desired_skills') }}</textarea>
-                                @error('desired_skills')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
                             </div>
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Projetos Atuais *</label>
-                                <textarea id="current_projects" name="current_projects" rows="4"
+                                <textarea id="currentProjects" name="currentProjects" rows="4"
                                     placeholder="Descreva os principais projetos em andamento que precisam de voluntários..."
-                                    class="w-full px-3 py-3 border @error('current_projects') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
-                                    required>{{ old('current_projects') }}</textarea>
-                                @error('current_projects')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
+                                    required></textarea>
                             </div>
 
                             <div class="grid md:grid-cols-2 gap-6">
@@ -344,32 +368,26 @@
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Frequência de
                                         Atividades</label>
                                     <select id="frequency" name="frequency"
-                                        class="w-full px-3 py-3 border @error('frequency') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="diaria" @selected(old('frequency')=='diaria' )>Atividades diárias</option>
-                                        <option value="semanal" @selected(old('frequency')=='semanal' )>Atividades semanais</option>
-                                        <option value="mensal" @selected(old('frequency')=='mensal' )>Atividades mensais</option>
-                                        <option value="eventual" @selected(old('frequency')=='eventual' )>Atividades eventuais</option>
+                                        <option value="diaria">Atividades diárias</option>
+                                        <option value="semanal">Atividades semanais</option>
+                                        <option value="mensal">Atividades mensais</option>
+                                        <option value="eventual">Atividades eventuais</option>
                                     </select>
-                                    @error('frequency')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-2">Número de Voluntários
                                         Ativos</label>
-                                    <select id="active_volunteers" name="active_volunteers"
-                                        class="w-full px-3 py-3 border @error('active_volunteers') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                    <select id="activeVolunteers" name="activeVolunteers"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
                                         <option value="">Selecione</option>
-                                        <option value="0-5" @selected(old('active_volunteers')=='0-5' )>0 a 5 voluntários</option>
-                                        <option value="6-15" @selected(old('active_volunteers')=='6-15' )>6 a 15 voluntários</option>
-                                        <option value="16-30" @selected(old('active_volunteers')=='16-30' )>16 a 30 voluntários</option>
-                                        <option value="31-50" @selected(old('active_volunteers')=='31-50' )>31 a 50 voluntários</option>
-                                        <option value="50+" @selected(old('active_volunteers')=='50+' )>Mais de 50 voluntários</option>
+                                        <option value="0-5">0 a 5 voluntários</option>
+                                        <option value="6-15">6 a 15 voluntários</option>
+                                        <option value="16-30">16 a 30 voluntários</option>
+                                        <option value="31-50">31 a 50 voluntários</option>
+                                        <option value="50+">Mais de 50 voluntários</option>
                                     </select>
-                                    @error('active_volunteers')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -377,22 +395,12 @@
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Pessoa Responsável pelo
                                     Contato *</label>
                                 <div class="grid md:grid-cols-2 gap-4">
-                                    <div>
-                                        <input type="text" id="contact_name" name="contact_name" placeholder="Nome completo"
-                                            class="w-full px-3 py-3 border @error('contact_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                            value="{{ old('contact_name') }}" required>
-                                        @error('contact_name')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div>
-                                        <input type="text" id="contact_role" name="contact_role" placeholder="Cargo/Função"
-                                            class="w-full px-3 py-3 border @error('contact_role') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                                            value="{{ old('contact_role') }}" required>
-                                        @error('contact_role')
-                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+                                    <input type="text" id="contactName" name="contactName" placeholder="Nome completo"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
+                                    <input type="text" id="contactRole" name="contactRole" placeholder="Cargo/Função"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        required>
                                 </div>
                             </div>
                         </div>
@@ -419,51 +427,16 @@
                         <div class="max-w-md mx-auto space-y-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Senha *</label>
-                                <div class="relative">
-                                    <input type="password" id="password" placeholder="********" class="input-field w-full px-4 py-3 pl-12 pr-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" name="password" required>
-                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center  pointer-events-none">
-                                        <svg class="h-5 w-5 tezt-gray-400" fill="currentColor" viewbox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-
-                                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center">
-                                        <button type="button" class="password-toggler text-gray-400" onclick="togglerPassword('password')">
-                                            <svg id="eye-open-password" class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                            </svg>
-                                            <svg id="eye-closed-password" class="h-5 w-5 hidden" fill="currentColor" viewbox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
-                                                <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
+                                <input type="password" id="password" name="password"
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    required>
                             </div>
+
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Confirmar Senha *</label>
-                                <div class="relative">
-                                    <input type="password" id="password_confirmation" placeholder="********" class="input-field w-full px-4 py-3 pl-12 pr-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent" name="password_confirmation" required>
-                                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center  pointer-events-none">
-                                        <svg class="h-5 w-5 tezt-gray-400" fill="currentColor" viewbox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-
-                                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center">
-                                        <button type="button" class="password-toggler text-gray-400" onclick="togglerPassword('password_confirmation')">
-                                            <svg id="eye-open-password_confirmation" class="h-5 w-5" fill="currentColor" viewbox="0 0 20 20">
-                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
-                                            </svg>
-                                            <svg id="eye-closed-password_confirmation" class="h-5 w-5 hidden" fill="currentColor" viewbox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
-                                                <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
+                                <input type="password" id="confirmPassword" name="confirmPassword"
+                                    class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                    required>
                             </div>
 
                             <!-- Password Requirements -->
@@ -526,13 +499,10 @@
                                     <a href="#" class="text-blue-600 hover:underline">Política de Privacidade</a> *
                                 </label>
                             </div>
-                            @error('terms')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
 
                             <div class="flex items-start">
-                                <input type="checkbox" id="newsletter" name="newsletter" value="1"
-                                    class="mt-1 mr-3 text-blue-600" @checked(old('newsletter'))>
+                                <input type="checkbox" id="newsletter" name="newsletter"
+                                    class="mt-1 mr-3 text-blue-600">
                                 <label for="newsletter" class="text-sm text-gray-600">
                                     Quero receber novidades sobre voluntários e funcionalidades da plataforma
                                 </label>
@@ -556,8 +526,7 @@
     </div>
 
     <!-- Success Modal -->
-    <div id="success-modal"
-        class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4">
+    <div id="success-modal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-8 text-center transform scale-95 transition-transform">
             <div class="bg-green-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
                 <svg class="h-10 w-10 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -577,9 +546,6 @@
     </div>
 
     <script>
-        let currentStep = 1;
-        const totalSteps = 4;
-
         // Progress update
         function updateProgress() {
             const progressBar = document.querySelector('.progress-bar');
@@ -646,7 +612,7 @@
 
         // Validation functions
         function validateStep1() {
-            const requiredFields = ['org_name', 'cnpj', 'email', 'phone', 'address', 'state', 'city'];
+            const requiredFields = ['orgName', 'cnpj', 'email', 'phone', 'address', 'state', 'city'];
             let isValid = true;
 
             requiredFields.forEach(fieldId => {
@@ -667,7 +633,7 @@
         }
 
         function validateStep2() {
-            const areas = document.querySelectorAll('input[name="causas[]"]:checked');
+            const areas = document.querySelectorAll('input[name="areas"]:checked');
             const mission = document.getElementById('mission').value;
 
             if (areas.length === 0) {
@@ -687,51 +653,37 @@
         }
 
         function validateStep3() {
-            const volunteerTypes = document.querySelectorAll('input[name="volunteer_types[]"]:checked');
-            const current_projects = document.getElementById('current_projects').value;
-            const contact_name = document.getElementById('contact_name').value;
-            const contact_role = document.getElementById('contact_role').value;
+            const volunteerTypes = document.querySelectorAll('input[name="volunteerTypes"]:checked');
+            const currentProjects = document.getElementById('currentProjects').value;
+            const contactName = document.getElementById('contactName').value;
+            const contactRole = document.getElementById('contactRole').value;
 
             if (volunteerTypes.length === 0) {
                 alert('Por favor, selecione pelo menos um tipo de voluntário procurado.');
                 return false;
             }
 
-            if (!current_projects.trim()) {
+            if (!currentProjects.trim()) {
                 alert('Por favor, descreva os projetos atuais.');
-                document.getElementById('current_projects').classList.add('border-red-500');
+                document.getElementById('currentProjects').classList.add('border-red-500');
                 return false;
             } else {
-                document.getElementById('current_projects').classList.remove('border-red-500');
+                document.getElementById('currentProjects').classList.remove('border-red-500');
             }
 
-            if (!contact_name.trim() || !contact_role.trim()) {
+            if (!contactName.trim() || !contactRole.trim()) {
                 alert('Por favor, preencha as informações da pessoa responsável pelo contato.');
-                if (!contact_name.trim()) document.getElementById('contact_name').classList.add('border-red-500');
-                if (!contact_role.trim()) document.getElementById('contact_role').classList.add('border-red-500');
+                if (!contactName.trim()) document.getElementById('contactName').classList.add('border-red-500');
+                if (!contactRole.trim()) document.getElementById('contactRole').classList.add('border-red-500');
                 return false;
             } else {
-                document.getElementById('contact_name').classList.remove('border-red-500');
-                document.getElementById('contact_role').classList.remove('border-red-500');
+                document.getElementById('contactName').classList.remove('border-red-500');
+                document.getElementById('contactRole').classList.remove('border-red-500');
             }
 
             return true;
         }
-        // Password visibility toggle
-        function togglerPassword(fieldId) {
-            const passwordField = document.getElementById(fieldId);
-            const eyeOpen = document.getElementById(`eye-open-${fieldId}`);
-            const eyeClosed = document.getElementById(`eye-closed-${fieldId}`);
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                eyeOpen.classList.add('hidden');
-                eyeClosed.classList.remove('hidden');
-            } else {
-                passwordField.type = "password";
-                eyeOpen.classList.remove('hidden');
-                eyeClosed.classList.add('hidden');
-            }
-        }
+
         // Password validation functions
         function validatePassword(password) {
             const requirements = {
@@ -772,65 +724,104 @@
 
         function checkPasswordMatch() {
             const password = document.getElementById('password').value;
-            const password_confirmation = document.getElementById('password_confirmation').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
             const messageDiv = document.getElementById('password-match-message');
 
-            if (password_confirmation.length > 0) {
-                if (password === password_confirmation) {
+            if (confirmPassword.length > 0) {
+                if (password === confirmPassword) {
                     messageDiv.innerHTML = '<p class="text-green-600 flex items-center"><svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>As senhas coincidem</p>';
                     messageDiv.classList.remove('hidden');
-                    document.getElementById('password_confirmation').classList.remove('border-red-500');
-                    document.getElementById('password_confirmation').classList.add('border-green-500');
+                    document.getElementById('confirmPassword').classList.remove('border-red-500');
+                    document.getElementById('confirmPassword').classList.add('border-green-500');
                 } else {
                     messageDiv.innerHTML = '<p class="text-red-600 flex items-center"><svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>As senhas não coincidem</p>';
                     messageDiv.classList.remove('hidden');
-                    document.getElementById('password_confirmation').classList.add('border-red-500');
-                    document.getElementById('password_confirmation').classList.remove('border-green-500');
+                    document.getElementById('confirmPassword').classList.add('border-red-500');
+                    document.getElementById('confirmPassword').classList.remove('border-green-500');
                 }
             } else {
                 messageDiv.classList.add('hidden');
-                document.getElementById('password_confirmation').classList.remove('border-red-500', 'border-green-500');
+                document.getElementById('confirmPassword').classList.remove('border-red-500', 'border-green-500');
             }
         }
 
-        // Modal functions
-        let redirected = false;
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', function (e) {
+            e.preventDefault();
 
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+
+            // Validate password requirements
+            if (!validatePassword(password)) {
+                alert('A senha não atende aos requisitos de segurança. Verifique os critérios destacados.');
+                document.getElementById('password').focus();
+                return;
+            }
+
+            // Check password match
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem.');
+                document.getElementById('confirmPassword').focus();
+                return;
+            }
+
+            // Check terms agreement
+            if (!terms) {
+                alert('Você deve concordar com os Termos de Uso e Política de Privacidade para continuar.');
+                document.getElementById('terms').focus();
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-form');
+            const originalText = submitBtn.textContent;
+
+            // Show loading
+            submitBtn.textContent = 'Criando conta...';
+            submitBtn.disabled = true;
+
+            // Show modal after delay
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                showModal();
+            }, 2000);
+        });
+
+        // Modal functions
         function showModal() {
             const modal = document.getElementById('success-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            modal.classList.add('show');
             document.body.style.overflow = 'hidden';
-
-            setTimeout(() => {
-                if (!redirected) {
-                    redirected = true;
-                    window.location.href = '/ongs';
-                }
-            }, 4000);
         }
 
         function closeModal() {
-            if (!redirected) {
-                redirected = true;
-                document.body.style.overflow = 'auto';
-                window.location.href = '/ongs';
-            }
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
         }
 
+        // Close modal on outside click
+        document.getElementById('success-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
         // Password field event listeners
-        document.getElementById('password').addEventListener('input', function() {
+        document.getElementById('password').addEventListener('input', function () {
             const password = this.value;
             validatePassword(password);
 
             // Also check password match if confirm password has value
-            const password_confirmation = document.getElementById('password_confirmation').value;
-            if (password_confirmation.length > 0) {
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (confirmPassword.length > 0) {
                 checkPasswordMatch();
             }
         });
 
-        document.getElementById('password_confirmation').addEventListener('input', function() {
+        document.getElementById('confirmPassword').addEventListener('input', function () {
             checkPasswordMatch();
         });
 

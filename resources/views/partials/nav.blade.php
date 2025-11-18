@@ -21,7 +21,7 @@
 
       {{-- Botões de ação (desktop) --}}
       <div class="hidden md:flex items-center space-x-3">
-        <a href="{{ route('inicio') }}" class="bg-white text-green-600 border border-green-600 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</a>
+        <a href="{{ route('entrar') }}" class="bg-white text-green-600 border border-green-600 px-4 py-2 rounded-md font-medium hover:bg-green-50 transition">Entrar</a>
         <a href="{{ route('cadastro') }}" class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition">Cadastrar</a>
       </div>
 

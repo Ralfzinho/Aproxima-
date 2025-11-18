@@ -31,11 +31,11 @@
                         sua causa e comece a transformar vidas hoje.
                     </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="{{ route('inicio') }}"
+                        <a href="{{ route('cadastro_voluntario') }}"
                             class="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
                             Quero Ajudar
                         </a>
-                        <a href="{{ route('inicio') }}"
+                        <a href="{{ route('cadastro_ong') }}"
                             class="bg-transparent text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
                             Sou uma ONG
                         </a>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="md:w-1/2 md:pl-10">
                     <div class="bg-white p-6 rounded-xl shadow-xl">
-                        <form action="{{ route('inicio') }}" method="GET">
+                        <form action="{{ route('ongs') }}" method="GET">
                             <h3 class="text-2xl font-bold text-gray-800 mb-4">Encontre sua causa</h3>
 
                             <div class="mb-4">
@@ -632,10 +632,10 @@
                 Junte-se a milhares de pessoas e organizações que estão transformando o mundo, uma ação de cada vez.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="{{ route('inicio') }}"
+                <a href="{{ route('cadastro_voluntario') }}"
                     class="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">Quero
                     ser voluntário</a>
-                <a href="{{ route('inicio') }}"
+                <a href="{{ route('cadastro_ong') }}"
                     class="bg-transparent text-white border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">Cadastrar
                     minha ONG</a>
             </div>

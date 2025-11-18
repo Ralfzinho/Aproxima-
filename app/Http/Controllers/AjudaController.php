@@ -13,7 +13,9 @@ class AjudaController extends Controller
      */
     public function index()
     {
-        $ajudas = ajuda::all();
+        $ajudas = ajuda::orderByDesc('id')
+            ->paginate(5)                
+            ->withQueryString();
         return view("ajudas.index", compact("ajudas"));
     }
 

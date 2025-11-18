@@ -263,7 +263,7 @@
             // Simula carregamento e depois redireciona
             setTimeout(() => {
                 // Aqui você redirecionaria para a página principal
-                 window.location.href = "{{ route(name: 'inicio') }}";
+                 window.location.href = "{{ route(name: 'entrar') }}";
                 button.innerHTML = originalContent;
                 button.disabled = false;
             }, 2000);
