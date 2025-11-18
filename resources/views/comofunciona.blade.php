@@ -28,14 +28,14 @@
                 Um processo simples e eficiente para transformar vidas.
             </p>
             <div class="flex justify-center space-x-4">
-                <button onclick="scrollToSection('para-voluntarios')"
+                <a href="#para-voluntarios"
                     class="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
                     Para Voluntários
-                </button>
-                <button onclick="scrollToSection('para-ongs')"
+                </a>
+                <a href="#para-ongs"
                     class="bg-transparent text-white border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
                     Para ONGs
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -647,11 +647,11 @@
                 Junte-se a milhares de pessoas que já estão fazendo a diferença. Encontre sua causa hoje mesmo.
             </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="ONGS.html"
+                <a href="/ongs"
                     class="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-100 transition">
                     Encontrar ONGs
                 </a>
-                <a href="cadastro.html"
+                <a href="/cadastro_ong"
                     class="bg-transparent text-white border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
                     Cadastrar minha ONG
                 </a>
@@ -660,6 +660,38 @@
     </section>
     {{-- Footer --}}
     @include('partials.footer')
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const duration = 500; 
+                    const start = window.pageYOffset;
+                    const end = targetElement.getBoundingClientRect().top;
+                    let startTime = null;
+
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const run = ease(timeElapsed, start, end, duration);
+                        window.scrollTo(0, run);
+                        if (timeElapsed < duration) requestAnimationFrame(animation);
+                    }
+
+                    function ease(t, b, c, d) {
+                        return c * t / d + b;
+                    }
+
+                    requestAnimationFrame(animation);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
