@@ -13,7 +13,7 @@ O projeto foi desenvolvido com o **framework Laravel**, utilizando uma arquitetu
 **Principais Tecnologias:**
 
 * **PHP 8+** com **Laravel 11**
-* **MySQL** para o banco de dados relacional
+* **PostGreSQL** para o banco de dados relacional
 * **Blade** para renderização de templates
 * **HTML5, CSS3 e JavaScript** para o front-end
 * **Tailwind CSS** para estilo responsivo
@@ -140,9 +140,48 @@ Acesse: [http://localhost:8000](http://localhost:8000)
 
 ---
 
+
+
+# Documentação técnica do Aproxima+
+
+## Arquitetura Laravel
+- **Rotas**: `routes/web.php` organiza páginas públicas (`/`, `/como-funciona`, `/ongs`), fluxos autenticados (`/inicio`, `/admin`) e CRUDs de causas/ajudas via `Route::resource`. As rotas de cadastro usam controladores dedicados para voluntários e ONGs. 
+- **Controle**: controladores em `app/Http/Controllers` encapsulam regras de negócio e retornam views Blade.
+- **Modelos**: `app/Models` define validações estáticas, casts e relacionamentos N:N para pivot tables (`interesse_usuario`, `ong_causa`, `ong_ajuda`).
+- **Views/Front-end**: páginas Blade em `resources/views` usam Tailwind e assets estáticos de `public/css` e `public/js`. Formulários principais são multi-etapas para voluntários e ONGs.
+
+## Rotas e navegação
+- **Públicas**: home e páginas institucionais (`/como-funciona`, `/ongs`, `/infocausas`) são carregadas direto por `Route::view`.
+- **Autenticadas**: `/inicio` e `/admin` exigem `auth` e, no caso de `/inicio`, estando autenticado. Há atalhos para páginas Livewire de perfil, senha e aparência em `/settings/*`.
+- **CRUDs administrativos**: `Route::resource('ajudas', ...)` e `Route::resource('causas', ...)` expõem listagem, criação, edição e exclusão de tipos de ajuda e causas.
+- **Cadastros**: voluntários acessam `/cadastro_voluntario` e ONGs `/cadastro_ong`; ambos enviam POST para salvar registros e redirecionar ao início.
+
+## Controladores e fluxos principais
+- **AjudaController**: pagina a lista de ajudas, aplica validação de unicidade, cria, edita e exclui registros com feedback de sucesso/erro via redirects. Views dedicadas em `resources/views/ajudas/*` recebem os dados paginados.
+- **CausaController**: idêntico ao fluxo de ajudas, mantendo CRUD completo para causas.
+- **VoluntarioController**: carrega causas para popular o checklist do formulário, valida a entrada via `User::validateVoluntario`, cria o usuário com `User::createVoluntario` e autentica com `Auth::login` antes de redirecionar ao dashboard.
+- **OngController**: traz a lista de causas, delega validação a `Ong::validateCadastro` e cria registros com `Ong::createCadastro`, retornando ao início com mensagem de sucesso.
+
+## Modelos e regras de negócio
+- **User**: define constantes de disponibilidade e experiência, esconde senha, faz cast de datas e provê relacionamento N:N com causas (pivot `interesse_usuario`). As funções `validateVoluntario` e `createVoluntario` centralizam regras e criação do voluntário, incluindo sincronização de causas.
+- **Ong**: configura listas permitidas de tipos de voluntariado, frequências e UFs, faz cast do JSON de tipos e define relacionamento N:N com causas (`ong_causa`). As funções `validateCadastro` e `createCadastro` aplicam regras (senha confirmada, CNPJ de 14 dígitos, seleção mínima de causas), sanitizam os dados (hash de senha, limpeza do CNPJ), e sincronizam o pivot.
+- **Causa/Ajuda**: modelos simples com `fillable` para nome/descrição, usados pelos CRUDs e por pivots (`interesse_usuario`, `ong_ajuda`, `ong_causa`).
+
+## Banco de dados
+- **Causas e ajudas**: tabelas com `nome`, `descricao` e timestamps, criadas pelas migrações `2025_08_19_235317_create_causas_table` e `2025_08_19_235318_create_ajudas_table`.
+- **ONGs**: tabela rica com campos de contato, endereço, operação e preferências; inclui JSONB `volunteer_types`, enum `frequency`, índices de estado/cidade e várias `CHECK` constraints para UF, CNPJ e ano de fundação.
+- **Pivots e interesses**: `interesse_usuario` vincula usuários a causas com unicidade e timestamp de interesse; `ong_causa` relaciona ONGs a causas; `ong_ajuda` mapeia ONGs aos tipos de ajuda, todas com exclusão em cascata.
+
+## Views e front-end
+- **Cadastro de voluntário**: formulário multi-etapas em `resources/views/cadastro_voluntario.blade.php` coleta dados pessoais, causas de interesse, disponibilidade, experiência, perfil profissional e credenciais. Usa Tailwind, validação de backend, barra de progresso e navegação entre passos via JS.
+- **Listagens administrativas**: `resources/views/ajudas/index.blade.php` exibe cards com totais, filtros básicos, ações de editar/excluir com SweetAlert e paginação padrão do Laravel. O layout compartilha `partials.header` e `partials.sidebar`.
+
+## Execução e ambiente
+- Dependências são instaladas com `composer install` e `npm install`; a configuração usa `.env` e `php artisan key:generate`. Migrações e seeds são aplicados com `php artisan migrate --seed`, e o servidor roda em `php artisan serve`.
+
+---
 ## 🤝 Contribuição
 
 Sinta-se à vontade para contribuir com o projeto! Envie **pull requests** com melhorias, correções ou novas funcionalidades. Abra issues para reportar bugs ou sugerir features.
 
 ---
-
